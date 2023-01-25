@@ -18,6 +18,7 @@ public class AppManager : Manager
 
     private void Awake()
     {
+        Setup(this);
         DontDestroyOnLoad(this);
         sceneLoadingManagerObject = Instantiate(sceneLoadingManagerPrefab);
         gameManagerObject = Instantiate(gameManagerPrefab);
@@ -31,9 +32,13 @@ public class AppManager : Manager
         gameManager = gameManagerObject.GetComponent<GameManager>();
         mainMenuManager = mainMenuManagerObject.GetComponent<MainMenuManager>();
 
-/*        sceneLoadingManager.Setup(this);
+        sceneLoadingManager.Setup(this);
         gameManager.Setup(this);
-        mainMenuManager.Setup(this);*/
+        mainMenuManager.Setup(this);
     }
 
+    public override void Setup(Manager manager)
+    {
+        base.Setup(manager);
+    }
 }
