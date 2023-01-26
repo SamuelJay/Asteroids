@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class MainMenuManager : Manager
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject mainMenuCanvasPrefab;
 
-    // Update is called once per frame
-    void Update()
+    private GameObject mainMenuCanvasObject;
+    private MainMenuCanvasController mainMenuCanvasController;
+
+    public override void Setup(Manager manager)
     {
-        
+        base.Setup(manager);
+        mainMenuCanvasObject = Instantiate(mainMenuCanvasPrefab);
+        mainMenuCanvasController = GetComponent<MainMenuCanvasController>();
+        mainMenuCanvasController.Setup(manager);
     }
 }
