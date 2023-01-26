@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,31 +27,51 @@ public class AppManager : Manager
         Setup(this);
         DontDestroyOnLoad(this);
         sceneLoadingManagerObject = Instantiate(sceneLoadingManagerPrefab);
-        gameManagerObject = Instantiate(gameManagerPrefab);
-        mainMenuManagerObject = Instantiate(mainMenuManagerPrefab);
         eventManagerObject = Instantiate(eventManagerPrefab);
 
         DontDestroyOnLoad(sceneLoadingManagerObject);
-        DontDestroyOnLoad(gameManagerObject);
-        DontDestroyOnLoad(mainMenuManagerObject);
         DontDestroyOnLoad(eventManagerObject);
 
         sceneLoadingManager = sceneLoadingManagerObject.GetComponent<SceneLoadingManager>();
-        gameManager = gameManagerObject.GetComponent<GameManager>();
-        mainMenuManager = mainMenuManagerObject.GetComponent<MainMenuManager>();
         eventManager = eventManagerObject.GetComponent<EventManager>();
 
         sceneLoadingManager.Setup(this);
-        gameManager.Setup(this);
-        mainMenuManager.Setup(this);
         eventManager.Setup(this);
 
+        StartListeningToEvent<SceneLoadedEvent>(OnSceneLoadedEvent);
         sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);
-        Debug.Log("hello");
+
     }
 
     public override void Setup(Manager manager)
     {
         base.Setup(manager);
+    }
+
+    private void SetupMainMenuScene()
+    {
+        mainMenuManagerObject = Instantiate(mainMenuManagerPrefab);
+        mainMenuManager = mainMenuManagerObject.GetComponent<MainMenuManager>();
+        mainMenuManager.Setup(this);
+    }
+
+    private void SetupGameScene()
+    {
+        gameManagerObject = Instantiate(gameManagerPrefab);
+        gameManager = gameManagerObject.GetComponent<GameManager>();
+        gameManager.Setup(this);
+    }
+
+    private void OnSceneLoadedEvent(object sender, EventArgs e)
+    {
+        SceneLoadedEvent sceneLoadedEvent = (SceneLoadedEvent)e;
+        if(sceneLoadedEvent.scene.name == "MainMenu")
+        {
+            SetupMainMenuScene();
+        }
+        else if(sceneLoadedEvent.scene.name == "Game")
+        {
+            SetupGameScene();
+        }
     }
 }

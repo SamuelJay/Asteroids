@@ -9,9 +9,11 @@ public class BaseBehaviour : MonoBehaviour
     {
         get 
             {
-            return manager.eventManager;
+            return appmanager.eventManager;
             }
     }
+
+    private AppManager appmanager => manager as AppManager;
     public Manager manager { get; private set; }
     public virtual void Setup(Manager manager)
     {
