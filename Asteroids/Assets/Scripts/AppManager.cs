@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AppManager : Manager
 {
@@ -43,6 +44,9 @@ public class AppManager : Manager
         gameManager.Setup(this);
         mainMenuManager.Setup(this);
         eventManager.Setup(this);
+
+        sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Debug.Log("hello");
     }
 
     public override void Setup(Manager manager)

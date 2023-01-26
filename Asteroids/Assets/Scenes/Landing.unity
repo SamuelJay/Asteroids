@@ -317,6 +317,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8371540017426986692, guid: 2147f158dde4dd34a8883a3535e5d0fb, type: 3}
     - target: {fileID: 1898154899177242431, guid: 9299d878202b52a418750bdbfd50fca3, type: 3}
+      propertyPath: eventManagerPrefab
+      value: 
+      objectReference: {fileID: 2665733628224777916, guid: c6834b4eb59a87f44bb1c84ad8ff8250, type: 3}
+    - target: {fileID: 1898154899177242431, guid: 9299d878202b52a418750bdbfd50fca3, type: 3}
       propertyPath: mainMenuManagerPrefab
       value: 
       objectReference: {fileID: 779724654112464292, guid: 64325cf8a08a1e14ca72d3be617217e4, type: 3}
