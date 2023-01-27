@@ -9,18 +9,20 @@ public class AppManager : Manager
     public SceneLoadingManager sceneLoadingManager { get; private set; }
     public GameManager gameManager { get; private set; }
     public MainMenuManager mainMenuManager { get; private set; }
-
     public EventManager eventManager { get; private set; }
+    public UIManager UIManager { get; private set; }
 
     [SerializeField] private GameObject sceneLoadingManagerPrefab;
     [SerializeField] private GameObject gameManagerPrefab;
     [SerializeField] private GameObject mainMenuManagerPrefab;
     [SerializeField] private GameObject eventManagerPrefab;
+    [SerializeField] private GameObject uiManagerPrefab;
 
     private GameObject sceneLoadingManagerObject;
     private GameObject gameManagerObject;
     private GameObject mainMenuManagerObject;
     private GameObject eventManagerObject;
+    private GameObject uiManagerObject;
 
     private void Awake()
     {
@@ -28,15 +30,19 @@ public class AppManager : Manager
         DontDestroyOnLoad(this);
         sceneLoadingManagerObject = Instantiate(sceneLoadingManagerPrefab);
         eventManagerObject = Instantiate(eventManagerPrefab);
+        uiManagerObject = Instantiate(uiManagerPrefab);
 
         DontDestroyOnLoad(sceneLoadingManagerObject);
         DontDestroyOnLoad(eventManagerObject);
+        DontDestroyOnLoad(uiManagerObject);
 
         sceneLoadingManager = sceneLoadingManagerObject.GetComponent<SceneLoadingManager>();
         eventManager = eventManagerObject.GetComponent<EventManager>();
+        UIManager = uiManagerObject.GetComponent<UIManager>();
 
         sceneLoadingManager.Setup(this);
         eventManager.Setup(this);
+        UIManager.Setup(this);
 
         StartListeningToEvent<SceneLoadedEvent>(OnSceneLoadedEvent);
         sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);

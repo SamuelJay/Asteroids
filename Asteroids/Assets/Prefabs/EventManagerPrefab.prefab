@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5395652231017422442}
   - component: {fileID: 3588382273811146081}
   m_Layer: 0
-  m_Name: EventManager
+  m_Name: EventManagerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
