@@ -10,7 +10,7 @@ public class AppManager : Manager
     public GameManager gameManager { get; private set; }
     public MainMenuManager mainMenuManager { get; private set; }
     public EventManager eventManager { get; private set; }
-    public UIManager UIManager { get; private set; }
+    public UIManager uiManager { get; private set; }
 
     [SerializeField] private GameObject sceneLoadingManagerPrefab;
     [SerializeField] private GameObject gameManagerPrefab;
@@ -38,11 +38,11 @@ public class AppManager : Manager
 
         sceneLoadingManager = sceneLoadingManagerObject.GetComponent<SceneLoadingManager>();
         eventManager = eventManagerObject.GetComponent<EventManager>();
-        UIManager = uiManagerObject.GetComponent<UIManager>();
+        uiManager = uiManagerObject.GetComponent<UIManager>();
 
         sceneLoadingManager.Setup(this);
         eventManager.Setup(this);
-        UIManager.Setup(this);
+        uiManager.Setup(this);
 
         StartListeningToEvent<SceneLoadedEvent>(OnSceneLoadedEvent);
         sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);
@@ -71,13 +71,12 @@ public class AppManager : Manager
     private void OnSceneLoadedEvent(object sender, EventArgs e)
     {
         SceneLoadedEvent sceneLoadedEvent = (SceneLoadedEvent)e;
-        if(sceneLoadedEvent.scene.name == "MainMenu")
+         switch (sceneLoadedEvent.scene.name)
         {
-            SetupMainMenuScene();
-        }
-        else if(sceneLoadedEvent.scene.name == "Game")
-        {
-            SetupGameScene();
-        }
+            case "MainMenu": SetupMainMenuScene(); 
+                break;
+            case "Game": SetupGameScene();
+                break;
+        };
     }
 }

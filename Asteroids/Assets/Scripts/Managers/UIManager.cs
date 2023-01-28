@@ -1,18 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : Manager
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject mainMenuCanvasPrefab;
+    private GameObject mainMenuCanvasObject;
+    private MainMenuCanvasController mainMenuCanvasController;
+    
+    public override void Setup(Manager manager)
     {
-        
+        base.Setup(manager);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetupMainMenuUI() 
     {
-        
+        mainMenuCanvasObject = Instantiate(mainMenuCanvasPrefab);
+        mainMenuCanvasController = mainMenuCanvasObject.GetComponent<MainMenuCanvasController>();
+        mainMenuCanvasController.Setup(manager);
+    }
+
+    public void SetupGameUI()
+    {
+
     }
 }
