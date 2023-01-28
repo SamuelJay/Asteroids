@@ -8,7 +8,10 @@ using System;
 
 public class MainMenuCanvasController : Controller
 {
+    private AppManager appManager => manager as AppManager;
+    private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;
     [SerializeField] private Button startButton;
+
 
     public override void Setup(Manager manager)
     {
