@@ -27,7 +27,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,3 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fac356bdc618347b411dfcbd1f9dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventManagerPrefab: {fileID: 2665733628224777916, guid: c6834b4eb59a87f44bb1c84ad8ff8250, type: 3}
+  dataManagerPrefab: {fileID: 3128213308248086806, guid: d0c589f643776dd4ea0a077b4cefea21, type: 3}
+  sceneLoadingManagerPrefab: {fileID: 1456492146408834882, guid: 268d3539c286a1c4492e4c293a5bd0c7, type: 3}
+  uiManagerPrefab: {fileID: 415760253771395830, guid: 8964b9bc37f6f2444af83dda94da9fd9, type: 3}
+  mainMenuManagerPrefab: {fileID: 779724654112464292, guid: 64325cf8a08a1e14ca72d3be617217e4, type: 3}
+  gameManagerPrefab: {fileID: 8371540017426986692, guid: 2147f158dde4dd34a8883a3535e5d0fb, type: 3}

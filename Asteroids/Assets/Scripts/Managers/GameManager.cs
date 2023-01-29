@@ -7,13 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Manager
 {
+    public InputActions inputActions { get; private set; }
     [SerializeField] private GameObject playerPrefab;
     private GameObject playerObject;
     private PlayerBehaviour playerBehaviour;
-
     private AppManager appManager => manager as AppManager;
     private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;
-    private InputActions inputActions;
 
     public override void Setup(Manager manager)
     {
