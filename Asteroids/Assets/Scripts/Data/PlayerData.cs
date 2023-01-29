@@ -9,16 +9,16 @@ public class PlayerData : ScriptableObject
     [SerializeField] private int speed;
     [SerializeField] private int rotationSpeed;
 
-    public int Health() 
+    public int GetHealth() 
     {
         return health;
     }
-    public int Speed()
+    public int GetSpeed()
     {
         return speed;
     }
 
-    public int RotationSpeed()
+    public int GetRotationSpeed()
     {
         return rotationSpeed;
     }

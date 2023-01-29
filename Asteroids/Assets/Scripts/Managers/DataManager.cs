@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class DataManager : Manager
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private PlayerData[] playerData;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public PlayerData GetPlayerDataForLevel(int level) => playerData[level];
 }

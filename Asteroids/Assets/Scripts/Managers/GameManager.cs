@@ -8,10 +8,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : Manager
 {
     public InputActions inputActions { get; private set; }
+    
     [SerializeField] private GameObject playerPrefab;
     private GameObject playerObject;
     private PlayerBehaviour playerBehaviour;
     private AppManager appManager => manager as AppManager;
+    private DataManager dataManager=> appManager.dataManager;
     private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;
 
     public override void Setup(Manager manager)
@@ -24,7 +26,7 @@ public class GameManager : Manager
 
         playerObject = Instantiate(playerPrefab);
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
-        playerBehaviour.Setup(manager);
+        playerBehaviour.Setup(manager, dataManager.GetPlayerDataForLevel(0));
     }
 
     private void OnMenuPressed(InputAction.CallbackContext obj)
