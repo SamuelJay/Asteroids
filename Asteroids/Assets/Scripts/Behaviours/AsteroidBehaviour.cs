@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class AsteroidBehaviour : BaseObjectBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int speed;
+    private int stage;
+    public void Setup(Manager manager, int speed, int stage)
     {
-        
+        base.Setup(manager);
+        this.speed = speed;
+        this.stage = stage;
+        transform.Rotate(0, 0, Random.Range(0, 360));
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
+        transform.position += transform.up * speed * Time.deltaTime;
+
     }
 }

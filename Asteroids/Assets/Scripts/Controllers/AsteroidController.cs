@@ -6,12 +6,13 @@ public class AsteroidController : Controller
 {
     
     [SerializeField] private GameObject[] asteroidPrefabs;
-
+    private AsteroidsData asteroidsData;
     private Dictionary<int, ObjectPooler> asteroidPoolsByStage;
 
-    public override void Setup(Manager manager)
+    public void Setup(Manager manager, AsteroidsData asteroidsData)
     {
         base.Setup(manager);
+        this.asteroidsData = asteroidsData; 
         asteroidPoolsByStage = new Dictionary<int, ObjectPooler>();
         for (int i = 0; i < asteroidPrefabs.Length; i++) 
         {
@@ -24,7 +25,9 @@ public class AsteroidController : Controller
         for (int i = 0; i < amount; i++)
         {
             GameObject asteroid = asteroidPoolsByStage[0].GetPooledObject();
+            AsteroidBehaviour asteroidBehaviour = asteroid.GetComponent<AsteroidBehaviour>();
             asteroid.SetActive(true);
+            asteroidBehaviour.Setup(manager,asteroidsData.GetSpeed(),0);
             float halfWidth = Camera.main.orthographicSize * Camera.main.aspect;
             float halfHeight = Camera.main.orthographicSize;
 

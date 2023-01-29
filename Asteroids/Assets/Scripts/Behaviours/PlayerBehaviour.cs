@@ -36,5 +36,18 @@ public class PlayerBehaviour : BaseObjectBehaviour
             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
         }
     }
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        AsteroidBehaviour asteroidBehaviour = other.gameObject.GetComponent<AsteroidBehaviour>();
+        if (asteroidBehaviour != null)
+        {
+            Debug.Log("Ouch!");
+            health--;
+            if (health < 0) 
+            {
+                TriggerEvent<PlayerDeadEvent>(new PlayerDeadEvent());
+            }
+        }
+    }
+
 }

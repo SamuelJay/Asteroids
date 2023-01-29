@@ -22,7 +22,9 @@ public class GameManager : Manager
     public override void Setup(Manager manager)
     {
         base.Setup(manager);
-        
+
+        StartListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
+
         inputActions = new InputActions();
         inputActions.Enable();
         inputActions.AppControls.Menu.performed += OnMenuPressed;
@@ -32,8 +34,13 @@ public class GameManager : Manager
         playerBehaviour.Setup(manager, dataManager.GetPlayerDataForLevel(0));
         asteroidControllerObject = Instantiate(asteroidControllerPrefab);
         asteroidController = asteroidControllerObject.GetComponent<AsteroidController>();
-        asteroidController.Setup(manager);
+        asteroidController.Setup(manager, asteroidsData);
         asteroidController.CreateNewAsteroids(asteroidsData.GetStartingAmount());
+    }
+
+    private void OnPlayerDeadEvent(object sender, EventArgs e)
+    {
+        sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     private void OnMenuPressed(InputAction.CallbackContext obj)
