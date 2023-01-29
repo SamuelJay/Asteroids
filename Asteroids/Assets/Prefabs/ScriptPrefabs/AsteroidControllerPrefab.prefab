@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8371540017426986692
+--- !u!1 &2426824269846906122
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4992847040636065260}
-  - component: {fileID: 4267082609609964914}
+  - component: {fileID: 8344350990062941437}
+  - component: {fileID: 3205986920655264078}
   m_Layer: 0
-  m_Name: GameManagerPrefab
+  m_Name: AsteroidControllerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4992847040636065260
+--- !u!4 &8344350990062941437
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8371540017426986692}
+  m_GameObject: {fileID: 2426824269846906122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,17 +31,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4267082609609964914
+--- !u!114 &3205986920655264078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8371540017426986692}
+  m_GameObject: {fileID: 2426824269846906122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d1c5632c505d649ae14af2ae56f460, type: 3}
+  m_Script: {fileID: 11500000, guid: 69b280a7d0a03744ba8d68238f4a1a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7293004474059176131, guid: 3d066b5eea0852f4ca57504f6354bc0f, type: 3}
-  asteroidPoolControllerPrefab: {fileID: 2426824269846906122, guid: 7202d9c894d6b70469cc4d7d0dee2510, type: 3}
+  asteroidsData: {fileID: 0}
+  asteroidPrefabs:
+  - {fileID: 3718953284186318128, guid: 94f59238be6fac64e8fd2257b0b98f79, type: 3}
+  - {fileID: 1179053902005286533, guid: 169e4144bf929254abc6425d49e962c7, type: 3}
+  - {fileID: 8806303670232135045, guid: e9107833cd1e5f5499c374a1d8cea211, type: 3}
+  - {fileID: 7078082877458064795, guid: 1edb9ff7fb76ed64abcb446b37b1b458, type: 3}
+  - {fileID: 6839805964286969011, guid: 92ba7f10fb79f874bb45c5c7a8806252, type: 3}

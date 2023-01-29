@@ -11,7 +11,10 @@ public class GameManager : Manager
     
     [SerializeField] private GameObject playerPrefab;
     private GameObject playerObject;
-    private PlayerBehaviour playerBehaviour;
+    private PlayerBehaviour playerBehaviour; 
+    [SerializeField] private GameObject asteroidPoolControllerPrefab;
+    private GameObject asteroidPoolControllerObject;
+    private AsteroidController asteroidPoolController;
     private AppManager appManager => manager as AppManager;
     private DataManager dataManager=> appManager.dataManager;
     private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;
@@ -27,6 +30,9 @@ public class GameManager : Manager
         playerObject = Instantiate(playerPrefab);
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         playerBehaviour.Setup(manager, dataManager.GetPlayerDataForLevel(0));
+        asteroidPoolControllerObject = Instantiate(asteroidPoolControllerPrefab);
+        asteroidPoolController = asteroidPoolControllerObject.GetComponent<AsteroidController>();
+        asteroidPoolController.Setup(manager);
     }
 
     private void OnMenuPressed(InputAction.CallbackContext obj)
