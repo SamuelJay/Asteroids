@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerBehaviour : BaseBehaviour
+public class PlayerBehaviour : BaseObjectBehaviour
 {
     private PlayerData data;
     private int speed => data.GetSpeed();
@@ -20,8 +20,9 @@ public class PlayerBehaviour : BaseBehaviour
         this.data = data;
         health = data.GetHealth();
     }
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (inputActions.PlayerControl.Forward.ReadValue<float>() > 0)
         {
             transform.position += transform.up * speed * Time.deltaTime;
@@ -34,29 +35,6 @@ public class PlayerBehaviour : BaseBehaviour
         {
             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
         }
-       
-        Vector3 screenPosition = Camera.main.WorldToViewportPoint(transform.position);
-        
-        if (screenPosition.x < 0)
-        {
-            screenPosition.x = 1;
-        }
-
-        if (screenPosition.x > 1)
-        {
-            screenPosition.x = 0;
-        }
-
-        if (screenPosition.y > 1)
-        {
-            screenPosition.y = 0;
-        }
-
-        if (screenPosition.y < 0)
-        {
-            screenPosition.y = 1;
-        }
-
-        transform.position = Camera.main.ViewportToWorldPoint(screenPosition); 
     }
+   
 }
