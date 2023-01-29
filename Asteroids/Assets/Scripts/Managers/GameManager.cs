@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : Manager
 {
     public InputActions inputActions { get; private set; }
-    
+    [SerializeField] private AsteroidsData asteroidsData;
     [SerializeField] private GameObject playerPrefab;
     private GameObject playerObject;
     private PlayerBehaviour playerBehaviour; 
-    [SerializeField] private GameObject asteroidPoolControllerPrefab;
-    private GameObject asteroidPoolControllerObject;
-    private AsteroidController asteroidPoolController;
+    [SerializeField] private GameObject asteroidControllerPrefab;
+    private GameObject asteroidControllerObject;
+    private AsteroidController asteroidController;
     private AppManager appManager => manager as AppManager;
     private DataManager dataManager=> appManager.dataManager;
     private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;
@@ -30,9 +30,10 @@ public class GameManager : Manager
         playerObject = Instantiate(playerPrefab);
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         playerBehaviour.Setup(manager, dataManager.GetPlayerDataForLevel(0));
-        asteroidPoolControllerObject = Instantiate(asteroidPoolControllerPrefab);
-        asteroidPoolController = asteroidPoolControllerObject.GetComponent<AsteroidController>();
-        asteroidPoolController.Setup(manager);
+        asteroidControllerObject = Instantiate(asteroidControllerPrefab);
+        asteroidController = asteroidControllerObject.GetComponent<AsteroidController>();
+        asteroidController.Setup(manager);
+        asteroidController.CreateNewAsteroids(asteroidsData.GetStartingAmount());
     }
 
     private void OnMenuPressed(InputAction.CallbackContext obj)

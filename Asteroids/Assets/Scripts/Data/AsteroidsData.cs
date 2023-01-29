@@ -6,6 +6,8 @@ public class AsteroidsData : ScriptableObject
 {
     [SerializeField] private int health;
     [SerializeField] private int numberOfStages;
+    [SerializeField] private int startingAmount;
+    [SerializeField] private int increaseAmount;
     [SerializeField] private int speed;
 
     public int GetHealth()
@@ -21,5 +23,15 @@ public class AsteroidsData : ScriptableObject
     public int GetSpeed()
     {
         return speed;
+    }
+    
+    public int GetStartingAmount()
+    {
+        return startingAmount;
+    }
+    
+    public int GetIncreaseAmount()
+    {
+        return increaseAmount;
     }
 }
