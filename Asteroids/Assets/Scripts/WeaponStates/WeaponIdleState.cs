@@ -18,7 +18,7 @@ public class WeaponIdleState : State
         //Debug.Log("WeaponIdleState OnShootPressed");
         EndState(new WeaponShootingState(stateMachineBehaviour, data));
     }
-    protected override void EndState(State nextState)
+    public override void EndState(State nextState)
     {
         StopListeningToEvent<ShootPressedEvent>(OnShootPressed);
         //Debug.Log("WeaponIdleState EndState");

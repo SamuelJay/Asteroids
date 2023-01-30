@@ -26,6 +26,7 @@ public class PlayerBehaviour : BaseObjectBehaviour
 
         weaponBehaviours[0].Setup(manager);
         weaponBehaviours[1].Setup(manager);
+        weaponBehaviours[1].Unequip();
         weaponBehaviours[1].gameObject.SetActive(false);
 
     }
@@ -33,9 +34,9 @@ public class PlayerBehaviour : BaseObjectBehaviour
     public void ChangeToSecondaryWeapon()
     {
         weaponBehaviours[0].gameObject.SetActive(false);
+        weaponBehaviours[0].Unequip();
         weaponBehaviours[1].gameObject.SetActive(true);
-        
-
+        weaponBehaviours[1].Equip();
     }
 
     public void StartWaitThenWeaponChangeBack(int waitTime) 
@@ -48,9 +49,11 @@ public class PlayerBehaviour : BaseObjectBehaviour
         yield return new WaitForSeconds(waitTime);
         Debug.Log("Does is ever happen");
         weaponBehaviours[1].gameObject.SetActive(false);
+        weaponBehaviours[1].Unequip();
         weaponBehaviours[0].gameObject.SetActive(true);
-        
+        weaponBehaviours[0].Equip();
     }
+
     public void TurnOnBarrier(int numberOfHits)
     { 
         barrier.SetActive(true);

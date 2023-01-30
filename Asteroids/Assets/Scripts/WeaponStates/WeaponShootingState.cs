@@ -22,7 +22,7 @@ public class WeaponShootingState : State
         EndState(new WeaponCoolDownState(stateMachineBehaviour, data));
 
     }
-    protected override void EndState(State nextState)
+    public override void EndState(State nextState)
     {
         //Debug.Log("WeaponShootingState EndState");
         base.EndState(nextState);

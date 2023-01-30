@@ -15,8 +15,18 @@ public class WeaponBehaviour : StateMachineBehaviour
         bulletPrefab = data.GetBulletPrefab();
         bulletPool = new ObjectPooler(bulletPrefab);
         bulletPool.CreatePool();
-        SetState(new WeaponIdleState(this, data));
         burstCount = data.GetBurstAmount();
+        SetState(new WeaponIdleState(this, data));
+    }
+    public void Equip() 
+    {
+        state.EndState(new WeaponIdleState(this, data));
+    }
+
+    public void Unequip()
+    {
+        state.EndState(new WeaponInactiveState(this));
+        
     }
 
     private void Update()
@@ -33,10 +43,6 @@ public class WeaponBehaviour : StateMachineBehaviour
         BulletBehaviour bulletBehaviour = bullet.GetComponent<BulletBehaviour>();
         bulletBehaviour.Setup(manager, data.GetBulletSpeed(), data.GetBulletLifeTime());
         burstCount--;
-    }
-    private void OnDisable()
-    {
-        SetState(new WeaponIdleState(this, data));
     }
     public void EndBurst()
     {

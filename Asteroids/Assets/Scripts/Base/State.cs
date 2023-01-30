@@ -21,7 +21,7 @@ public class State
         //Debug.Log("State EnterState");
       
     }
-    protected virtual void EndState(State nextState) 
+    public virtual void EndState(State nextState) 
     {
         //Debug.Log("State EndState");
         stateMachineBehaviour.SetState(nextState);
