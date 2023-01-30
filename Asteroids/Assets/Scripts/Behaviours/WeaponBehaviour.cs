@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class WeaponBehaviour : StateMachineBehaviour
 {
-    [SerializeField] private GameObject weaponPrefab;
-    public WeaponData data { get; private set; }
+    [SerializeField] private WeaponData data;
+    private GameObject bulletPrefab;
     private ObjectPooler bulletPool;
-    public int burstCount;
-    public void Setup(Manager manager, WeaponData data)
+    public int burstCount { get; private set; }
+
+    public override void Setup(Manager manager)
     {
         base.Setup(manager);
-        this.data = data;
-        bulletPool = new ObjectPooler(20, weaponPrefab);
-        SetState(new WeaponIdleState(this));
+        bulletPrefab = data.GetBulletPrefab();
+        bulletPool = new ObjectPooler(bulletPrefab);
+        SetState(new WeaponIdleState(this, data));
         burstCount = data.GetBurstAmount();
     }
 

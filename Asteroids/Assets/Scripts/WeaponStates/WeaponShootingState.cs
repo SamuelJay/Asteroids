@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class WeaponShootingState : State
 {
+    WeaponData data;
     WeaponBehaviour weaponBehaviour=> stateMachineBehaviour as WeaponBehaviour;
-    public WeaponShootingState(StateMachineBehaviour stateMachineBehaviour) : base(stateMachineBehaviour) 
+    public WeaponShootingState(StateMachineBehaviour stateMachineBehaviour, WeaponData data) : base(stateMachineBehaviour) 
     {
         Debug.Log("WeaponShootingState");
-        
+        this.data = data;
     }
     public override void EnterState()
     {
@@ -18,7 +19,7 @@ public class WeaponShootingState : State
     private void Shoot() 
     {
         weaponBehaviour.Shoot();
-        EndState(new WeaponCoolDownState(stateMachineBehaviour));
+        EndState(new WeaponCoolDownState(stateMachineBehaviour, data));
 
     }
     protected override void EndState(State nextState)

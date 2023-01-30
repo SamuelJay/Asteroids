@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a042d0562fd8b8a429d1f4acb93f2588, type: 3}
-  m_Name: DefaultWeapon
+  m_Name: BlasterWeapon
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2428349709967609362, guid: e9fa6f09ea85fc44dbe72391da22687b, type: 3}
+  bulletPrefab: {fileID: 4082396664121103696, guid: edac6b3aa32ca7041810847e63300e40, type: 3}
   fullAuto: 0
-  burstAmount: 3
+  burstAmount: 1
   fireRate: 0.008
   coolDownTime: 0.5
-  bulletSpeed: 35
-  bulletLifeTime: 0.9
+  bulletSpeed: 25
+  bulletLifeTime: 1
   damage: 1

@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2aad6d153974a4ead88a33af8239a8, type: 3}
-  m_Name: BarrierPowerup
+  m_Script: {fileID: 11500000, guid: f69fb4287b0208a41a7acb38453f3166, type: 3}
+  m_Name: BlasterPowerupData
   m_EditorClassIdentifier: 
-  effectDuration: 0
-  sprite: {fileID: 0}
-  numberOfHits: 1

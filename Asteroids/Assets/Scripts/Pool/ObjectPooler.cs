@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class ObjectPooler 
 {
-    private int poolSize;
     private GameObject objectPrefab;
     private List<GameObject> pooledObjects;
 
-    public ObjectPooler (int poolSize, GameObject objectPrefab)
+    public ObjectPooler (GameObject objectPrefab)
     {
-        this.poolSize = poolSize;
         this.objectPrefab = objectPrefab;
         CreatePool();
     }

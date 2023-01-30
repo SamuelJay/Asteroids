@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5014535890441281941}
   - component: {fileID: 6019789118069520557}
   - component: {fileID: 8722949605128904014}
-  - component: {fileID: 1758734841886414197}
+  - component: {fileID: 3203991848666985007}
   m_Layer: 0
-  m_Name: BarrierPowerup
+  m_Name: BlasterPowerupPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7041859058614055712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.18, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1c26cb8967fe1ad4bb85716715804bfd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3afb6c4e44ae08e4a98a3cb4a65cff8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,9 +95,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.18, y: 10.18, z: 0.2}
+  m_Size: {x: 19, y: 19, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1758734841886414197
+--- !u!114 &3203991848666985007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7041859058614055712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 929506d265c0b4f428bd7847278b0941, type: 3}
+  m_Script: {fileID: 11500000, guid: aa5e7e188ec053445bee78690f19a744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupData: {fileID: 11400000, guid: d982719d7ab912c47bcfc0ca7240731a, type: 2}
+  powerupData: {fileID: 11400000, guid: d14a1d1749c13c84484fc580fca6f472, type: 2}

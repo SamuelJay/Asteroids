@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehaviour : BaseObjectBehaviour
 {
-    [SerializeField] private WeaponData weaponData;
+   
     [SerializeField] private GameObject barrier;
-    private WeaponBehaviour weaponBehaviour;
+    [SerializeField] private WeaponBehaviour[] weaponBehaviours;
     private PlayerData data;
     private int rotationSpeed => data.GetRotationSpeed();
     private int health; 
@@ -22,10 +22,12 @@ public class PlayerBehaviour : BaseObjectBehaviour
         this.data = data;
         health = data.GetHealth();
         speed = data.GetSpeed();
-        weaponBehaviour = GetComponent<WeaponBehaviour>();
-        weaponBehaviour.Setup(manager, weaponData);
+
+        weaponBehaviours[0].Setup(manager);
         inputActions.PlayerControl.Shoot.performed += OnShootPressed;
     }
+
+    //public void ChangeProjectile
 
     public void TurnOnBarrier(int numberOfHits)
     { 

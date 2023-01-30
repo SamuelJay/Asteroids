@@ -19,10 +19,9 @@ public class AsteroidController : Controller
         asteroidPoolsByStage = new Dictionary<int, ObjectPooler>();
         for (int i = 0; i < asteroidPrefabs.Length; i++)
         {
-            asteroidPoolsByStage.Add(i, new ObjectPooler(50, asteroidPrefabs[i]));
+            asteroidPoolsByStage.Add(i, new ObjectPooler(asteroidPrefabs[i]));
         }
     }
-
 
     public void CreateNewAsteroids(int amount)
     {

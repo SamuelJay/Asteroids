@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "WeaponData", fileName = "New Weapon Data")]
 public class WeaponData : ScriptableObject
 {
+    
+    [SerializeField] GameObject bulletPrefab;
     [SerializeField] bool fullAuto;
     [SerializeField] int burstAmount;
     [SerializeField] float fireRate;
@@ -13,6 +15,11 @@ public class WeaponData : ScriptableObject
     [SerializeField] int bulletSpeed;
     [SerializeField] float bulletLifeTime;
     [SerializeField] int damage;
+
+    public GameObject GetBulletPrefab()
+    {
+        return bulletPrefab;
+    }
 
     public bool GetFullAuto()
     {

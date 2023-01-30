@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class WeaponIdleState : State
 {
-    public WeaponIdleState(StateMachineBehaviour stateMachineBehaviour): base(stateMachineBehaviour) 
+    private WeaponData data;
+    public WeaponIdleState(StateMachineBehaviour stateMachineBehaviour, WeaponData data) : base(stateMachineBehaviour) 
     {
         Debug.Log("WeaponIdleState");
+        this.data = data;
         StartListeningToEvent<ShootPressedEvent>(OnShootPressed);
     }
 
     private void OnShootPressed(object sender, EventArgs e)
     {
         Debug.Log("WeaponIdleState OnShootPressed");
-        EndState(new WeaponShootingState(stateMachineBehaviour));
+        EndState(new WeaponShootingState(stateMachineBehaviour, data));
     }
     protected override void EndState(State nextState)
     {
