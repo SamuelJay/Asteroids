@@ -5,12 +5,13 @@ using UnityEngine;
 public class ObjectPooler 
 {
     private GameObject poolObjectPrefab;
+    private GameObject parent;
     private List<GameObject> pooledObjects;
 
-    public ObjectPooler (GameObject objectPrefab)
+    public ObjectPooler (GameObject poolObjectPrefab, GameObject parent)
     {
-        this.poolObjectPrefab = objectPrefab;
-        
+        this.poolObjectPrefab = poolObjectPrefab;
+        this.parent = parent;
     }
 
     public void CreatePool() 
@@ -21,7 +22,6 @@ public class ObjectPooler
 
     public GameObject GetPooledObject()
     {
-        // Check if there is an inactive object in the pool
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
@@ -30,8 +30,8 @@ public class ObjectPooler
             }
         }
 
-        // If all objects are active, create a new one
         GameObject newObject = Object.Instantiate(poolObjectPrefab);
+        newObject.transform.parent = parent.transform;
         newObject.SetActive(false);
         pooledObjects.Add(newObject);
         return newObject;

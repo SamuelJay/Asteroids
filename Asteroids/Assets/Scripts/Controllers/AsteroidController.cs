@@ -17,10 +17,11 @@ public class AsteroidController : Controller
         StartListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyedEvent);
         this.asteroidsData = asteroidsData;
         asteroidPoolsByStage = new Dictionary<int, ObjectPooler>();
-        
+        GameObject asteroidParent = new GameObject("Asteroids");
         for (int i = 0; i < asteroidPrefabs.Length; i++)
         {
-            asteroidPoolsByStage.Add(i, new ObjectPooler(asteroidPrefabs[i]));
+
+            asteroidPoolsByStage.Add(i, new ObjectPooler(asteroidPrefabs[i], asteroidParent));
             asteroidPoolsByStage[i].CreatePool();
         }
     }

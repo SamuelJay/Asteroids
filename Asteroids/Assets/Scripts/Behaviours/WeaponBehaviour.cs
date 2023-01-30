@@ -13,7 +13,7 @@ public class WeaponBehaviour : StateMachineBehaviour
     {
         base.Setup(manager);
         bulletPrefab = data.GetBulletPrefab();
-        bulletPool = new ObjectPooler(bulletPrefab);
+        bulletPool = new ObjectPooler(bulletPrefab, new GameObject("Bullets"));
         bulletPool.CreatePool();
         burstCount = data.GetBurstAmount();
         SetState(new WeaponIdleState(this, data));
