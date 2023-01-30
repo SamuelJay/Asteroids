@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1632771582320427130}
-  - component: {fileID: 4957631441409795391}
   - component: {fileID: 6497343329300773465}
+  - component: {fileID: 2127068808719122541}
   m_Layer: 0
   m_Name: CresentMoonProjectilePrefab
   m_TagString: Untagged
@@ -33,20 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &4957631441409795391
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4082396664121103696}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 136b5387521bf0348b9ec06f2142d87a, type: 3}
 --- !u!114 &6497343329300773465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9ac413d23c0d842a500422f87edd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &2127068808719122541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4082396664121103696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.255, y: 1.59, z: 0.2}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1001 &5144395311856866656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,15 +71,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 136b5387521bf0348b9ec06f2142d87a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 136b5387521bf0348b9ec06f2142d87a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 60
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 136b5387521bf0348b9ec06f2142d87a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 60
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 136b5387521bf0348b9ec06f2142d87a, type: 3}
       propertyPath: m_LocalPosition.x
