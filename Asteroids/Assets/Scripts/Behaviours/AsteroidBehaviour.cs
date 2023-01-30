@@ -6,6 +6,7 @@ public class AsteroidBehaviour : BaseObjectBehaviour
 {
     public int stage { get; private set; }
     private int health;
+    private bool hit;
     public void Setup(Manager manager,int health, int speed, int stage)
     {
         base.Setup(manager);
@@ -21,19 +22,25 @@ public class AsteroidBehaviour : BaseObjectBehaviour
         base.Update();
         Move();
     }
-
+    private void FixedUpdate()
+    {
+        if (hit)
+        {
+            health--;
+            if (health == 0)
+            {
+                TriggerEvent<AsteroidDestroyedEvent>(new AsteroidDestroyedEvent(this));
+            }
+            hit = false;
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         BulletBehaviour bullet= collision.gameObject.GetComponent<BulletBehaviour>();
         if (bullet!=null)
         {
-            //Debug.Log("Asteroid Says Ouch!");
-            health--;
-            if (health <= 0)
-            {
-                TriggerEvent<AsteroidDestroyedEvent>(new AsteroidDestroyedEvent(this));
-                bullet.gameObject.SetActive(false);
-            }
+            hit = true;
+            bullet.gameObject.SetActive(false);
         }
     }
 }

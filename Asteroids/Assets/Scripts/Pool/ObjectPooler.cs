@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ObjectPooler 
 {
-    private GameObject objectPrefab;
+    private GameObject poolObjectPrefab;
     private List<GameObject> pooledObjects;
 
     public ObjectPooler (GameObject objectPrefab)
     {
-        this.objectPrefab = objectPrefab;
+        this.poolObjectPrefab = objectPrefab;
         
     }
 
@@ -31,9 +31,9 @@ public class ObjectPooler
         }
 
         // If all objects are active, create a new one
-        GameObject obj = Object.Instantiate(objectPrefab);
-        obj.SetActive(false);
-        pooledObjects.Add(obj);
-        return obj;
+        GameObject newObject = Object.Instantiate(poolObjectPrefab);
+        newObject.SetActive(false);
+        pooledObjects.Add(newObject);
+        return newObject;
     }
 }

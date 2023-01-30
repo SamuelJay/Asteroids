@@ -39,5 +39,14 @@ public class BaseObjectBehaviour : BaseBehaviour
     protected void Move()
     {
         transform.position += transform.up * speed * Time.deltaTime;
+
+        Vector3 currentPosition = transform.position;
+        currentPosition.z = 0;
+        transform.position = currentPosition;
+        Vector3 currentRotation = transform.localEulerAngles;
+        currentRotation.x = 0;
+        currentRotation.y = 0;
+        transform.localEulerAngles = currentRotation;
+        
     }
 }

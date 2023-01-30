@@ -18,6 +18,7 @@ public class GameManager : Manager
     [SerializeField] private GameObject[] powerupPrefabs;
 
     private int asteroidsDestroyedCount;
+    private int progressCount;
     private GameObject playerObject;
     private GameObject asteroidControllerObject;
     private PlayerBehaviour playerBehaviour; 
@@ -50,14 +51,21 @@ public class GameManager : Manager
     {
         AsteroidDestroyedEvent asteroidDestroyedEvent = (AsteroidDestroyedEvent)e;
         AsteroidBehaviour asteroidBehaviour = asteroidDestroyedEvent.hitAsteroid;
-        
+        Debug.Log($"GameManger OnAsteroidDestroyedEvent{asteroidBehaviour.stage}");
         if (asteroidBehaviour.stage >= asteroidsData.GetNumberOfStages())
         {
             score += gameData.GetPointsForDestroyingAsteroids();
             asteroidsDestroyedCount++;
+            Debug.Log($"GameManger OnAsteroidDestroyedEvent asteroidsDestroyedCount {asteroidsDestroyedCount} numberOfAsteroidsAfterSplits {asteroidController.numberOfAsteroidsAfterSplits}");
             if (asteroidsDestroyedCount % gameData.GetPowerupFrequency()==0) 
             {
                 CreatePowerup(asteroidBehaviour.transform.position);
+            }
+            if (asteroidsDestroyedCount >= asteroidController.numberOfAsteroidsAfterSplits)
+            {
+                progressCount++;
+                asteroidController.CreateNewAsteroids(asteroidsData.GetStartingAmount() + (asteroidsData.GetIncreaseAmount() * progressCount));
+                asteroidsDestroyedCount = 0;
             }
         }
     }
