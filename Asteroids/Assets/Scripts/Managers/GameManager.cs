@@ -80,4 +80,10 @@ public class GameManager : Manager
         BasePowerup powerupBehaviour=powerUp.GetComponent<BasePowerup>();
         powerupBehaviour.Setup(manager);
     }
+
+    private void OnDestroy()
+    {
+        StopListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
+        StopListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyedEvent);
+    }
 }

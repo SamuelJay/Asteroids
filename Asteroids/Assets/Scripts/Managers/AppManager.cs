@@ -86,4 +86,8 @@ public class AppManager : Manager
                 break;
         };
     }
+    private void OnDestroy()
+    {
+        StopListeningToEvent<SceneLoadedEvent>(OnSceneLoadedEvent);
+    }
 }

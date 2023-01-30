@@ -60,4 +60,9 @@ public class AsteroidController : Controller
         }
         asteroidBehaviour.gameObject.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        StopListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyedEvent);
+    }
 }
