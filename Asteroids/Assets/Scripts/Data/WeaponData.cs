@@ -11,6 +11,7 @@ public class WeaponData : ScriptableObject
     [SerializeField] float fireRate;
     [SerializeField] float coolDownTime;
     [SerializeField] int bulletSpeed;
+    [SerializeField] float bulletLifeTime;
     [SerializeField] int damage;
 
     public bool GetFullAuto()
@@ -33,9 +34,14 @@ public class WeaponData : ScriptableObject
         return fireRate;
     }
 
-    public int GetBulletSpeed ()
+    public int GetBulletSpeed()
     {
         return bulletSpeed;
+    }
+    
+    public float GetBulletLifeTime()
+    {
+        return bulletLifeTime;
     }
     
     public int GetDamage()

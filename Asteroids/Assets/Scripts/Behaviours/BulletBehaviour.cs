@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class BulletBehaviour : BaseObjectBehaviour
 {
-    public void Setup(Manager manager,int speed)
+    private float lifetime;
+    private float timer;
+    public void Setup(Manager manager, int speed, float lifetime)
     {
         base.Setup(manager);
         this.speed = speed; 
+        this.lifetime = lifetime;
+        timer = 0;
     }
     protected override void Update()
     {
         base.Update();
         Move();
+        timer+=Time.deltaTime;
+        
+        if (timer > lifetime)
+        {
+            gameObject.SetActive(false);
+            
+        }
     }
 }

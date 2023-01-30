@@ -15,22 +15,25 @@ public class WeaponBehaviour : StateMachineBehaviour
         bulletPool = new ObjectPooler(20, weaponPrefab);
         SetState(new WeaponIdleState(this));
         burstCount = data.GetBurstAmount();
-    } 
+    }
+
     private void Update()
     {
         Debug.Log("WeaponBehaviour Update");
         state.UpdateState();
     }
-    public void Shoot ()
+
+    public void Shoot()
     {
         GameObject bullet = bulletPool.GetPooledObject();
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
         bullet.SetActive(true);
         BulletBehaviour bulletBehaviour = bullet.GetComponent<BulletBehaviour>();
-        bulletBehaviour.Setup(manager,data.GetBulletSpeed());
+        bulletBehaviour.Setup(manager, data.GetBulletSpeed(), data.GetBulletLifeTime());
         burstCount--;
     }
+
     public void EndBurst()
     {
         burstCount = data.GetBurstAmount();
