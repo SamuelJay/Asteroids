@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: -3810871258385128580}
   - component: {fileID: 2720241353116177042}
   - component: {fileID: 810280826678371081}
+  - component: {fileID: -7018942157500483448}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -470,6 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 2428349709967609362, guid: e9fa6f09ea85fc44dbe72391da22687b, type: 3}
+  burstCount: 0
 --- !u!65 &2720241353116177042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -496,3 +498,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.3, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-7018942157500483448
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7293004474059176131}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 2
+  m_Constraints: 0
+  m_CollisionDetection: 0
