@@ -15,7 +15,9 @@ public class PlayerBehaviour : BaseObjectBehaviour
     private AppManager appManager => manager as AppManager;
     private GameManager gameManager => appManager.gameManager;
     private InputActions inputActions => gameManager.inputActions;
-
+    private bool waitingForBlaster;
+    private float blasterTimer;
+    private float blasterWaitTime;
     public void Setup(Manager manager, PlayerData data)
     {
         base.Setup(manager);
@@ -41,12 +43,14 @@ public class PlayerBehaviour : BaseObjectBehaviour
 
     public void StartWaitThenWeaponChangeBack(int waitTime) 
     {
-        StartCoroutine(WaitThenWeaponChangeBack(waitTime));
+        waitingForBlaster = true;
+        blasterWaitTime = waitTime;
+        blasterTimer = 0;
+        //StartCoroutine(WaitThenWeaponChangeBack(waitTime));
     }
 
-    private IEnumerator WaitThenWeaponChangeBack(int waitTime) 
+    private void ChangeWeaponBack() 
     {
-        yield return new WaitForSeconds(waitTime);
         weaponBehaviours[1].gameObject.SetActive(false);
         weaponBehaviours[1].Unequip();
         weaponBehaviours[0].gameObject.SetActive(true);
@@ -74,6 +78,15 @@ public class PlayerBehaviour : BaseObjectBehaviour
         if (inputActions.PlayerControl.RotateLeft.ReadValue<float>() > 0)
         {
             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        }
+        if (waitingForBlaster) 
+        { 
+            blasterTimer+=Time.deltaTime;
+            if (blasterTimer >= blasterWaitTime) 
+            {
+                ChangeWeaponBack();
+                waitingForBlaster=false;
+            }
         }
     }
     
