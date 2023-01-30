@@ -18,12 +18,7 @@ public class ObjectPooler
     private void CreatePool() 
     {
         pooledObjects = new List<GameObject>();
-        for (int i = 0; i < poolSize; i++)
-        {
-            GameObject objectToPool = Object.Instantiate(objectPrefab);
-            objectToPool.SetActive(false);
-            pooledObjects.Add(objectToPool);
-        }
+    
     }
 
     public GameObject GetPooledObject()
