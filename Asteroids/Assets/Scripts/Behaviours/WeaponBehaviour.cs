@@ -19,7 +19,6 @@ public class WeaponBehaviour : StateMachineBehaviour
 
     private void Update()
     {
-        Debug.Log("WeaponBehaviour Update");
         state.UpdateState();
     }
 

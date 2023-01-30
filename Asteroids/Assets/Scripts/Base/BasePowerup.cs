@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class BasePowerup : BaseBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] protected PowerupData powerupData;
+
+    public virtual void Setup(Manager manager, PowerupData powerupData)
     {
-        Debug.Log($"PowerupTrigger {other.gameObject.name}");
-        Destroy(gameObject);
+        base.Setup(manager);
+    }
+    protected void OnTriggerEnter(Collider other)
+    {
+        PlayerBehaviour playerBehaviour = other.GetComponent<PlayerBehaviour>();
+        if (playerBehaviour != null)
+        {
+            Debug.Log($"PowerupTrigger {other.gameObject.name}");
+            Use(playerBehaviour);
+            Destroy(gameObject);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log($"PowerupCollision {collision.gameObject.name}");
-        Destroy(gameObject);
-    }
+    protected virtual void Use(PlayerBehaviour playerBehaviour)
+    { }
+   
     
 }
 

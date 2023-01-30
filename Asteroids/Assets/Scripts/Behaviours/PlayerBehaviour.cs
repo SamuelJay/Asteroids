@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerBehaviour : BaseObjectBehaviour
 {
     [SerializeField] private WeaponData weaponData;
+    [SerializeField] private GameObject barrier;
     private WeaponBehaviour weaponBehaviour;
     private PlayerData data;
     private int rotationSpeed => data.GetRotationSpeed();
@@ -24,6 +25,13 @@ public class PlayerBehaviour : BaseObjectBehaviour
         weaponBehaviour = GetComponent<WeaponBehaviour>();
         weaponBehaviour.Setup(manager, weaponData);
         inputActions.PlayerControl.Shoot.performed += OnShootPressed;
+    }
+
+    public void TurnOnBarrier(int numberOfHits)
+    { 
+        barrier.SetActive(true);
+        Barrier barrierBehaviour = barrier.GetComponent<Barrier>();
+        barrierBehaviour.Setup(manager, numberOfHits);
     }
 
     protected override void Update()
