@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class WeaponIdleState : State
 {
-
-    public WeaponIdleState(StateMachineBehaviour stateMachineBehaviour) :base(stateMachineBehaviour) 
+    public WeaponIdleState(StateMachineBehaviour stateMachineBehaviour): base(stateMachineBehaviour) 
     {
         Debug.Log("WeaponIdleState");
         StartListeningToEvent<ShootPressedEvent>(OnShootPressed);
     }
-
-    
 
     private void OnShootPressed(object sender, EventArgs e)
     {
@@ -24,7 +21,5 @@ public class WeaponIdleState : State
         StopListeningToEvent<ShootPressedEvent>(OnShootPressed);
         Debug.Log("WeaponIdleState EndState");
         base.EndState(nextState);
-
     }
-
 }
