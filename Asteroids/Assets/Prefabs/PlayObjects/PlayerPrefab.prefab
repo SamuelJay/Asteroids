@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6949038c4ea3274284c932d93b5e665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 07bc205cc705a324e9999bb487723796, type: 2}
 --- !u!65 &2720241353116177042
 BoxCollider:
   m_ObjectHideFlags: 0

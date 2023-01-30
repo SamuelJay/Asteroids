@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class WeaponCoolDownState : State
 {
-   
+    public WeaponCoolDownState(StateMachineBehaviour stateMachineBehaviour) : base(stateMachineBehaviour) { }
 }

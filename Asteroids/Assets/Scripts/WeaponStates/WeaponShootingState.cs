@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class WeaponShootingState : State
 {
-  
+    public WeaponShootingState(StateMachineBehaviour stateMachineBehaviour) : base(stateMachineBehaviour) { }
 }

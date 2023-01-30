@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehaviour : BaseObjectBehaviour
 {
+    [SerializeField] private WeaponData weaponData;
+    private WeaponBehaviour weaponBehaviour;
     private PlayerData data;
     private int speed => data.GetSpeed();
     private int rotationSpeed => data.GetRotationSpeed();
@@ -19,7 +21,12 @@ public class PlayerBehaviour : BaseObjectBehaviour
         base.Setup(manager);
         this.data = data;
         health = data.GetHealth();
+        
+        weaponBehaviour = gameObject.AddComponent<WeaponBehaviour>();
+        weaponBehaviour.Setup(manager, weaponData);
+        inputActions.PlayerControl.Shoot.performed += OnShootPressed;
     }
+
     protected override void Update()
     {
         base.Update();
@@ -36,6 +43,12 @@ public class PlayerBehaviour : BaseObjectBehaviour
             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
         }
     }
+    
+    private void OnShootPressed(InputAction.CallbackContext obj)
+    {
+        
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         AsteroidBehaviour asteroidBehaviour = other.gameObject.GetComponent<AsteroidBehaviour>();
