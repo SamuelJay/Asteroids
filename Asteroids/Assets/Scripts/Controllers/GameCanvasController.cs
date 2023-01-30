@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameCanvasController : BaseBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverPopup;
     [SerializeField] private Button exitButton;
@@ -28,6 +29,7 @@ public class GameCanvasController : BaseBehaviour
     private void Update()
     {
         scoreText.text = $"Score:{gameManager.score}"; 
+        healthText.text = $"Health: {gameManager.playerHealth}";
     }
     private void OnPlayerDeadEvent(object sender, EventArgs e)
     {

@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class GameManager : Manager
 {
     public int score { get; private set; }
+    public int playerHealth => playerBehaviour.health;
     public InputActions inputActions { get; private set; }
     
     [SerializeField] private AsteroidsData asteroidsData;
@@ -21,8 +22,8 @@ public class GameManager : Manager
     private int progressCount;
     private GameObject playerObject;
     private GameObject asteroidControllerObject;
-    private PlayerBehaviour playerBehaviour; 
     private AsteroidController asteroidController;
+    private PlayerBehaviour playerBehaviour; 
     private AppManager appManager => manager as AppManager;
     private DataManager dataManager=> appManager.dataManager;
     private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;

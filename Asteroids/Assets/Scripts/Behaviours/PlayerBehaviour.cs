@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehaviour : BaseObjectBehaviour
 {
-   
-    [SerializeField] private GameObject barrier;
+    public int health { get; private set; } 
+    [SerializeField] private GameObject barrierPrefab;
     [SerializeField] private WeaponBehaviour[] weaponBehaviours;
     private PlayerData data;
+    private GameObject barrierObject;
     private int rotationSpeed => data.GetRotationSpeed();
-    private int health; 
     private AppManager appManager => manager as AppManager;
     private GameManager gameManager => appManager.gameManager;
     private InputActions inputActions => gameManager.inputActions;
@@ -54,10 +54,10 @@ public class PlayerBehaviour : BaseObjectBehaviour
     }
 
     public void TurnOnBarrier(int numberOfHits)
-    { 
-        barrier.SetActive(true);
-        Barrier barrierBehaviour = barrier.GetComponent<Barrier>();
-        barrierBehaviour.Setup(manager, numberOfHits);
+    {
+        barrierObject = Instantiate(barrierPrefab);
+        Barrier barrierBehaviour = barrierObject.GetComponent<Barrier>();
+        barrierBehaviour.Setup(manager, this, numberOfHits);
     }
 
     protected override void Update()

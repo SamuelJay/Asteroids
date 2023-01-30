@@ -48,7 +48,5 @@ MonoBehaviour:
   playerPrefab: {fileID: 7293004474059176131, guid: 3d066b5eea0852f4ca57504f6354bc0f, type: 3}
   asteroidControllerPrefab: {fileID: 2426824269846906122, guid: 7202d9c894d6b70469cc4d7d0dee2510, type: 3}
   powerupPrefabs:
-  - {fileID: 7041859058614055712, guid: 58bf99546f05aca4bbd19f7ca64b6670, type: 3}
   - {fileID: 7041859058614055712, guid: b32c1f79081633f43aeb91126606b3ef, type: 3}
-  playerSpawPoint: {x: -16, y: 0, z: 0}
-  playerSpawPoint2: {x: -11, y: 0, z: 0}
+  - {fileID: 7041859058614055712, guid: 58bf99546f05aca4bbd19f7ca64b6670, type: 3}
