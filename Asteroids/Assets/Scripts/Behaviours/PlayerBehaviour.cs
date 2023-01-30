@@ -47,7 +47,6 @@ public class PlayerBehaviour : BaseObjectBehaviour
     private IEnumerator WaitThenWeaponChangeBack(int waitTime) 
     {
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("Does is ever happen");
         weaponBehaviours[1].gameObject.SetActive(false);
         weaponBehaviours[1].Unequip();
         weaponBehaviours[0].gameObject.SetActive(true);

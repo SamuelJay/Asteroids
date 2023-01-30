@@ -26,18 +26,19 @@ public class GameManager : Manager
     private AppManager appManager => manager as AppManager;
     private DataManager dataManager=> appManager.dataManager;
     private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;
+    private UIManager uiManager => appManager.uiManager;
 
     public override void Setup(Manager manager)
     {
         base.Setup(manager);
 
-        StartListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
+        StartListeningToEvent<ExitButtonPressedEvent>(OnExitButtonPressedEvent);
         StartListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyedEvent);
 
         inputActions = new InputActions();
         inputActions.Enable();
         inputActions.AppControls.Menu.performed += OnMenuPressed;
-
+        uiManager.SetupGameUI();
         playerObject = Instantiate(playerPrefab);
         playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         playerBehaviour.Setup(manager, dataManager.GetPlayerDataForLevel(0));
@@ -70,7 +71,7 @@ public class GameManager : Manager
         }
     }
 
-    private void OnPlayerDeadEvent(object sender, EventArgs e)
+    private void OnExitButtonPressedEvent(object sender, EventArgs e)
     {
         sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
@@ -91,7 +92,7 @@ public class GameManager : Manager
 
     private void OnDestroy()
     {
-        StopListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
+        StopListeningToEvent<ExitButtonPressedEvent>(OnExitButtonPressedEvent);
         StopListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyedEvent);
         inputActions.AppControls.Menu.performed -= OnMenuPressed;
     }
