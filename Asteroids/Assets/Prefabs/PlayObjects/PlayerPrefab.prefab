@@ -415,6 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7606189543948936215}
   - component: {fileID: -1226619355439662054}
+  - component: {fileID: -3810871258385128580}
   - component: {fileID: 2720241353116177042}
   - component: {fileID: 810280826678371081}
   m_Layer: 0
@@ -456,6 +457,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 07bc205cc705a324e9999bb487723796, type: 2}
+--- !u!114 &-3810871258385128580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7293004474059176131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d274e8a76c54948a45405a269bc491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 2428349709967609362, guid: e9fa6f09ea85fc44dbe72391da22687b, type: 3}
 --- !u!65 &2720241353116177042
 BoxCollider:
   m_ObjectHideFlags: 0

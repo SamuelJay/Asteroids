@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AsteroidBehaviour : BaseObjectBehaviour
 {
-    private int speed;
     private int stage;
     public void Setup(Manager manager, int speed, int stage)
     {
@@ -18,7 +17,7 @@ public class AsteroidBehaviour : BaseObjectBehaviour
     protected override void Update()
     {
         base.Update();
-        transform.position += transform.up * speed * Time.deltaTime;
+        Move();
 
     }
 }

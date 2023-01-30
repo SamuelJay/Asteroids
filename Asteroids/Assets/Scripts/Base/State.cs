@@ -11,8 +11,20 @@ public class State
     {
         this.stateMachineBehaviour = stateMachineBehaviour;
     }
+
+    public virtual void UpdateState()
+    {
+        Debug.Log("State UpdateState");
+    }
+
+    public virtual void EnterState()
+    {
+        Debug.Log("State EnterState");
+      
+    }
     protected virtual void EndState(State nextState) 
     {
+        Debug.Log("State EndState");
         stateMachineBehaviour.SetState(nextState);
     }
     public void StartListeningToEvent<T>(EventHandler callback)

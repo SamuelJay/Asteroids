@@ -9,7 +9,6 @@ public class PlayerBehaviour : BaseObjectBehaviour
     [SerializeField] private WeaponData weaponData;
     private WeaponBehaviour weaponBehaviour;
     private PlayerData data;
-    private int speed => data.GetSpeed();
     private int rotationSpeed => data.GetRotationSpeed();
     private int health; 
     private AppManager appManager => manager as AppManager;
@@ -21,8 +20,8 @@ public class PlayerBehaviour : BaseObjectBehaviour
         base.Setup(manager);
         this.data = data;
         health = data.GetHealth();
-        
-        weaponBehaviour = gameObject.AddComponent<WeaponBehaviour>();
+        speed = data.GetSpeed();
+        weaponBehaviour = GetComponent<WeaponBehaviour>();
         weaponBehaviour.Setup(manager, weaponData);
         inputActions.PlayerControl.Shoot.performed += OnShootPressed;
     }
@@ -32,7 +31,7 @@ public class PlayerBehaviour : BaseObjectBehaviour
         base.Update();
         if (inputActions.PlayerControl.Forward.ReadValue<float>() > 0)
         {
-            transform.position += transform.up * speed * Time.deltaTime;
+            Move();
         }
         if (inputActions.PlayerControl.RotateRight.ReadValue<float>() > 0)
         {
@@ -47,6 +46,7 @@ public class PlayerBehaviour : BaseObjectBehaviour
     private void OnShootPressed(InputAction.CallbackContext obj)
     {
         
+        TriggerEvent<ShootPressedEvent>(new ShootPressedEvent());
     }
     
     private void OnTriggerEnter(Collider other)

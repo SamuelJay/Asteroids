@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseObjectBehaviour : BaseBehaviour
 {
+    protected int speed;
     protected virtual void Update()
     {
         WrapPosition();
@@ -33,5 +34,10 @@ public class BaseObjectBehaviour : BaseBehaviour
         }
 
         transform.position = Camera.main.ViewportToWorldPoint(screenPosition);
+    }
+
+    protected void Move()
+    {
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 }
