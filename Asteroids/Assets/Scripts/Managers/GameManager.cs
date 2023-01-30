@@ -58,7 +58,8 @@ public class GameManager : Manager
             score += gameData.GetPointsForDestroyingAsteroids();
             asteroidsDestroyedCount++;
             Debug.Log($"GameManger OnAsteroidDestroyedEvent asteroidsDestroyedCount {asteroidsDestroyedCount} numberOfAsteroidsAfterSplits {asteroidController.numberOfAsteroidsAfterSplits}");
-            if (asteroidsDestroyedCount % gameData.GetPowerupFrequency()==0) 
+            int powerupCheck = asteroidsDestroyedCount % gameData.GetPowerupFrequency();
+            if (powerupCheck == 0) 
             {
                 CreatePowerup(asteroidBehaviour.transform.position);
             }

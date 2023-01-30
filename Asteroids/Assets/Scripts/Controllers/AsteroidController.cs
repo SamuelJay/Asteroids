@@ -41,7 +41,7 @@ public class AsteroidController : Controller
             asteroid.transform.position = newPosition;
         }
         numberOfAsteroidsAfterSplits = amount * Mathf.Pow(asteroidsData.GetNumberOfFragments(), asteroidsData.GetNumberOfStages());
-        Debug.Log($"AsteroidCOntroller CreateNewAsteroids {numberOfAsteroidsAfterSplits}");
+        Debug.Log($"AsteroidController CreateNewAsteroids {numberOfAsteroidsAfterSplits}");
     }
     private void OnAsteroidDestroyedEvent(object sender, EventArgs e)
     {
@@ -50,7 +50,7 @@ public class AsteroidController : Controller
         Debug.Log($"AsteroidCOntroller OnAsteroidDestroyedEvent {asteroidBehaviour.stage}");
         Vector3 position = asteroidBehaviour.transform.position;
         asteroidBehaviour.gameObject.SetActive(false);
-        if (asteroidBehaviour.stage < asteroidsData.GetNumberOfStages())
+         if (asteroidBehaviour.stage < asteroidsData.GetNumberOfStages())
         {
             int nextStage = asteroidBehaviour.stage + 1;
            
