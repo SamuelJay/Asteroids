@@ -27,7 +27,7 @@ public class AsteroidBehaviour : BaseObjectBehaviour
         BulletBehaviour bullet= collision.gameObject.GetComponent<BulletBehaviour>();
         if (bullet!=null)
         {
-            Debug.Log("Asteroid Says Ouch!");
+            //Debug.Log("Asteroid Says Ouch!");
             health--;
             if (health <= 0)
             {

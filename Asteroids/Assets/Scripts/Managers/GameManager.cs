@@ -85,5 +85,6 @@ public class GameManager : Manager
     {
         StopListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
         StopListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyedEvent);
+        inputActions.AppControls.Menu.performed -= OnMenuPressed;
     }
 }

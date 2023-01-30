@@ -22,4 +22,9 @@ public class MainMenuManager : Manager
     {
         sceneLoadingManager.LoadScene("Game", LoadSceneMode.Single);
     }
+
+    private void OnDestroy()
+    {
+        StopListeningToEvent<StartButtonPressedEvent>(OnStartButtonPressedEvent);
+    }
 }

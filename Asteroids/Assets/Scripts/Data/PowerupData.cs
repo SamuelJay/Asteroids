@@ -6,6 +6,10 @@ using UnityEngine;
 public class PowerupData : ScriptableObject
 {
     [SerializeField] protected int effectDuration;
-    [SerializeField] protected Sprite sprite; 
+    [SerializeField] protected Sprite sprite;
 
+    public int GetEffectDuration()
+    {
+        return effectDuration;
+    }
 }

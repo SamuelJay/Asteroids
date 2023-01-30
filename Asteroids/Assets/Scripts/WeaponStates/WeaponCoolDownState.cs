@@ -11,7 +11,7 @@ public class WeaponCoolDownState : State
     private bool burst;
     public WeaponCoolDownState(StateMachineBehaviour stateMachineBehaviour, WeaponData data) : base(stateMachineBehaviour)
     {
-        Debug.Log("WeaponCoolDownState");
+        //Debug.Log("WeaponCoolDownState");
         this.data = data;
         timer = 0;
         burst = weaponBehaviour.burstCount > 0;
@@ -21,7 +21,7 @@ public class WeaponCoolDownState : State
     public override void UpdateState()
     {
         base.UpdateState();
-        Debug.Log("WeaponCoolDownState UpdateState");
+        //Debug.Log("WeaponCoolDownState UpdateState");
         timer += Time.deltaTime;
         
         if (timer >= waitTime)

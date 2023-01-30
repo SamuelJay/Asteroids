@@ -10,10 +10,10 @@ public class ObjectPooler
     public ObjectPooler (GameObject objectPrefab)
     {
         this.objectPrefab = objectPrefab;
-        CreatePool();
+        
     }
 
-    private void CreatePool() 
+    public void CreatePool() 
     {
         pooledObjects = new List<GameObject>();
     

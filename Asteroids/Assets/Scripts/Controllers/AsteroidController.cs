@@ -20,6 +20,7 @@ public class AsteroidController : Controller
         for (int i = 0; i < asteroidPrefabs.Length; i++)
         {
             asteroidPoolsByStage.Add(i, new ObjectPooler(asteroidPrefabs[i]));
+            asteroidPoolsByStage[i].CreatePool();
         }
     }
 

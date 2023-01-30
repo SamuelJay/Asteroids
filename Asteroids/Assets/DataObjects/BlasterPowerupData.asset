@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69fb4287b0208a41a7acb38453f3166, type: 3}
   m_Name: BlasterPowerupData
   m_EditorClassIdentifier: 
+  effectDuration: 10
+  sprite: {fileID: 0}

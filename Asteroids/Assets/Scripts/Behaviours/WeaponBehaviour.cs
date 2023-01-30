@@ -14,6 +14,7 @@ public class WeaponBehaviour : StateMachineBehaviour
         base.Setup(manager);
         bulletPrefab = data.GetBulletPrefab();
         bulletPool = new ObjectPooler(bulletPrefab);
+        bulletPool.CreatePool();
         SetState(new WeaponIdleState(this, data));
         burstCount = data.GetBurstAmount();
     }
@@ -33,9 +34,16 @@ public class WeaponBehaviour : StateMachineBehaviour
         bulletBehaviour.Setup(manager, data.GetBulletSpeed(), data.GetBulletLifeTime());
         burstCount--;
     }
-
+    private void OnDisable()
+    {
+        SetState(new WeaponIdleState(this, data));
+    }
     public void EndBurst()
     {
         burstCount = data.GetBurstAmount();
+    }
+    private void OnDestroy()
+    {
+       
     }
 }

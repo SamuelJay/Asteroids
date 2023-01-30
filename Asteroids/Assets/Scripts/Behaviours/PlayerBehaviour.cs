@@ -20,15 +20,37 @@ public class PlayerBehaviour : BaseObjectBehaviour
     {
         base.Setup(manager);
         this.data = data;
+        inputActions.PlayerControl.Shoot.performed += OnShootPressed;
         health = data.GetHealth();
         speed = data.GetSpeed();
 
         weaponBehaviours[0].Setup(manager);
-        inputActions.PlayerControl.Shoot.performed += OnShootPressed;
+        weaponBehaviours[1].Setup(manager);
+        weaponBehaviours[1].gameObject.SetActive(false);
+
     }
 
-    //public void ChangeProjectile
+    public void ChangeToSecondaryWeapon()
+    {
+        weaponBehaviours[0].gameObject.SetActive(false);
+        weaponBehaviours[1].gameObject.SetActive(true);
+        
 
+    }
+
+    public void StartWaitThenWeaponChangeBack(int waitTime) 
+    {
+        StartCoroutine(WaitThenWeaponChangeBack(waitTime));
+    }
+
+    private IEnumerator WaitThenWeaponChangeBack(int waitTime) 
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("Does is ever happen");
+        weaponBehaviours[1].gameObject.SetActive(false);
+        weaponBehaviours[0].gameObject.SetActive(true);
+        
+    }
     public void TurnOnBarrier(int numberOfHits)
     { 
         barrier.SetActive(true);
@@ -64,7 +86,7 @@ public class PlayerBehaviour : BaseObjectBehaviour
         AsteroidBehaviour asteroidBehaviour = other.gameObject.GetComponent<AsteroidBehaviour>();
         if (asteroidBehaviour != null)
         {
-            Debug.Log("Ouch!");
+            //Debug.Log("Ouch!");
             health--;
             if (health < 0) 
             {
@@ -73,4 +95,8 @@ public class PlayerBehaviour : BaseObjectBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        inputActions.PlayerControl.Shoot.performed -= OnShootPressed;
+    }
 }

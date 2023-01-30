@@ -8,20 +8,20 @@ public class WeaponIdleState : State
     private WeaponData data;
     public WeaponIdleState(StateMachineBehaviour stateMachineBehaviour, WeaponData data) : base(stateMachineBehaviour) 
     {
-        Debug.Log("WeaponIdleState");
+        //Debug.Log("WeaponIdleState");
         this.data = data;
         StartListeningToEvent<ShootPressedEvent>(OnShootPressed);
     }
 
     private void OnShootPressed(object sender, EventArgs e)
     {
-        Debug.Log("WeaponIdleState OnShootPressed");
+        //Debug.Log("WeaponIdleState OnShootPressed");
         EndState(new WeaponShootingState(stateMachineBehaviour, data));
     }
     protected override void EndState(State nextState)
     {
         StopListeningToEvent<ShootPressedEvent>(OnShootPressed);
-        Debug.Log("WeaponIdleState EndState");
+        //Debug.Log("WeaponIdleState EndState");
         base.EndState(nextState);
     }
 }

@@ -8,7 +8,7 @@ public class StateMachineBehaviour : BaseBehaviour
 
     public void SetState(State state) 
     {
-        Debug.Log($"StateMachineBehaviour SetState WeaponIdleState:{state as WeaponIdleState != null} WeaponShootingState:{state as WeaponShootingState != null} WeaponCoolDownState:{state as WeaponCoolDownState != null}");
+        //Debug.Log($"StateMachineBehaviour SetState WeaponIdleState:{state as WeaponIdleState != null} WeaponShootingState:{state as WeaponShootingState != null} WeaponCoolDownState:{state as WeaponCoolDownState != null}");
         this.state = state;
         state.EnterState();
     }

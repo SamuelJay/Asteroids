@@ -8,7 +8,7 @@ public class WeaponShootingState : State
     WeaponBehaviour weaponBehaviour=> stateMachineBehaviour as WeaponBehaviour;
     public WeaponShootingState(StateMachineBehaviour stateMachineBehaviour, WeaponData data) : base(stateMachineBehaviour) 
     {
-        Debug.Log("WeaponShootingState");
+        //Debug.Log("WeaponShootingState");
         this.data = data;
     }
     public override void EnterState()
@@ -24,7 +24,7 @@ public class WeaponShootingState : State
     }
     protected override void EndState(State nextState)
     {
-        Debug.Log("WeaponShootingState EndState");
+        //Debug.Log("WeaponShootingState EndState");
         base.EndState(nextState);
 
     }
