@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6019789118069520557}
   - component: {fileID: 8722949605128904014}
   - component: {fileID: 3203991848666985007}
+  - component: {fileID: 8875184430273567239}
   m_Layer: 0
   m_Name: BlasterPowerupPrefab
   m_TagString: Untagged
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupData: {fileID: 11400000, guid: d14a1d1749c13c84484fc580fca6f472, type: 2}
+--- !u!114 &8875184430273567239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041859058614055712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d81cc4a7694b6548b26e04b8efd1b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 250
+  reverse: 0
 --- !u!1001 &9027266717651620763
 PrefabInstance:
   m_ObjectHideFlags: 0

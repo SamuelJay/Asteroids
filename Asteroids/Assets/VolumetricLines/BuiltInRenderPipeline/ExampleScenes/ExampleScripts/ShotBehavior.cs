@@ -13,5 +13,7 @@ public class ShotBehavior : MonoBehaviour {
 		//transform.position += transform.forward * Time.deltaTime * 1000f;
 		
 		transform.position += new Vector3(transform.forward.x, transform.forward.y, 0) * Time.deltaTime * 1000f;
+		
+		transform.Rotate(0, 0, -90);
 	}
 }

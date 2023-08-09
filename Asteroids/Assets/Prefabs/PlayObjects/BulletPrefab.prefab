@@ -187,11 +187,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11489952, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
       propertyPath: m_endPos.z
-      value: 15.72
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489952, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
+      propertyPath: m_lineWidth
+      value: 365.6
       objectReference: {fileID: 0}
     - target: {fileID: 11489952, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
       propertyPath: m_lightSaberFactor
-      value: 0.11
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
