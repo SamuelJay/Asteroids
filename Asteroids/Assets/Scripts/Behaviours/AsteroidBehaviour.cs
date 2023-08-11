@@ -7,6 +7,7 @@ public class AsteroidBehaviour : BaseObjectBehaviour
     public int stage { get; private set; }
     private int health;
     private bool hit;
+    [SerializeField] ParticleSystem destructionEffect;
     public void Setup(Manager manager,int health, int speed, int stage)
     {
         base.Setup(manager);
@@ -29,11 +30,24 @@ public class AsteroidBehaviour : BaseObjectBehaviour
             health--;
             if (health == 0)
             {
+                DestroyWithEffect();
                 TriggerEvent<AsteroidDestroyedEvent>(new AsteroidDestroyedEvent(this));
             }
             hit = false;
         }
     }
+
+    private void DestroyWithEffect() {
+
+        if (destructionEffect != null)
+        {
+            ParticleSystem effect = Instantiate(destructionEffect, transform.position, Quaternion.identity);
+            effect.Play();
+            Destroy(effect.gameObject, effect.main.duration);
+        }
+        gameObject.SetActive(false);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         BulletBehaviour bullet= collision.gameObject.GetComponent<BulletBehaviour>();

@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3a8dfd1a492cf418540db44ed52226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destructionEffect: {fileID: 5585671604984661011, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
 --- !u!1001 &6621811166823540521
 PrefabInstance:
   m_ObjectHideFlags: 0
