@@ -18,6 +18,8 @@ public class PlayerBehaviour : BaseObjectBehaviour
     private bool waitingForBlaster;
     private float blasterTimer;
     private float blasterWaitTime;
+
+    [SerializeField] private ParticleSystem explosionParticle;
     public void Setup(Manager manager, PlayerData data)
     {
         base.Setup(manager);
@@ -101,10 +103,12 @@ public class PlayerBehaviour : BaseObjectBehaviour
         AsteroidBehaviour asteroidBehaviour = other.gameObject.GetComponent<AsteroidBehaviour>();
         if (asteroidBehaviour != null)
         {
-            //Debug.Log("Ouch!");
             health--;
             if (health < 0) 
             {
+                health = 0;
+                Instantiate(explosionParticle, transform.position, Quaternion.identity);
+                gameObject.SetActive(false);
                 TriggerEvent<PlayerDeadEvent>(new PlayerDeadEvent());
             }
         }

@@ -592,6 +592,7 @@ MonoBehaviour:
   weaponBehaviours:
   - {fileID: 3628242797063786096}
   - {fileID: 8309705818891570140}
+  explosionParticle: {fileID: 3123075737211501168, guid: a3f72d5f213bb7d458dfc2c4369e7acf, type: 3}
 --- !u!65 &2720241353116177042
 BoxCollider:
   m_ObjectHideFlags: 0
