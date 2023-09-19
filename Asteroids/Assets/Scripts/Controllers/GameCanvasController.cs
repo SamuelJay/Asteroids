@@ -12,6 +12,9 @@ public class GameCanvasController : BaseBehaviour
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverPopup;
     [SerializeField] private Button exitButton;
+
+    [SerializeField] private AudioClip[] gameMusic;
+    private AudioSource audioSource;
     private AppManager appManager=> manager as AppManager;
     private GameManager gameManager=> appManager.gameManager;
     public override void Setup(Manager manager)
@@ -19,11 +22,18 @@ public class GameCanvasController : BaseBehaviour
         base.Setup(manager);
         StartListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
         exitButton.onClick.AddListener(ExitButtonPressed);
+        AudioSetUp();
     }
 
     private void ExitButtonPressed()
     {
         TriggerEvent<ExitButtonPressedEvent>(new ExitButtonPressedEvent());
+    }
+
+    private void AudioSetUp() {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = gameMusic[UnityEngine.Random.Range(0, gameMusic.Length)];
+        audioSource.Play();
     }
 
     private void Update()
