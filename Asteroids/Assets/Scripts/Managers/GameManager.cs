@@ -18,8 +18,8 @@ public class GameManager : Manager
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject asteroidControllerPrefab;
     [SerializeField] private GameObject[] powerupPrefabs;
-    [SerializeField] private GameObject pauseMenu;
-    private bool isPaused;
+
+  
 
     private int asteroidsDestroyedCount;
     private int progressCount;
@@ -102,27 +102,5 @@ public class GameManager : Manager
         inputActions.AppControls.Menu.performed -= OnMenuPressed;
     }
 
-    public void PauseGame() {
-        if (!isPaused)
-        {
-            isPaused = true;
-            pauseMenu.SetActive(false);
-            //game slows down to zero speed
-            Time.timeScale = 0;
-        } else
-        {
-            isPaused = false;
-            pauseMenu.SetActive(false);
-            //game plays at normal speed
-            Time.timeScale = 1;
-        }
-    }
-
-    private void Update() {
-        
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PauseGame();
-        }
-    }
+   
 }

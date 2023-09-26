@@ -9,7 +9,8 @@ using System;
 public class MainMenuCanvasController : Controller
 {
     [SerializeField] private Button startButton;
-
+   /* [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip startGameSound;*/
 
     public override void Setup(Manager manager)
     {
@@ -17,8 +18,10 @@ public class MainMenuCanvasController : Controller
         startButton.onClick.AddListener(StartButtonPressed);
     }
 
-    private void StartButtonPressed()
+    public void StartButtonPressed()
     {
+      /*  audioSource.PlayOneShot(startGameSound);
+        Invoke("LoadGameScene", startGameSound.length);*/
         TriggerEvent<StartButtonPressedEvent>(new StartButtonPressedEvent());
     }
 }

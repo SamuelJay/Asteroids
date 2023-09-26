@@ -475,6 +475,7 @@ MonoBehaviour:
   gameOverScoreText: {fileID: 203986390353292839}
   gameOverPopup: {fileID: 896190148847443449}
   exitButton: {fileID: 206497883640185216}
+  pauseMenu: {fileID: 5237618696172690779}
   gameMusic:
   - {fileID: 8300000, guid: 47de1837195394140b0cfb6ae8d2ca6e, type: 3}
   - {fileID: 8300000, guid: f45a09baad229a545b635d1e65da0a3a, type: 3}

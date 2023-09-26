@@ -12,6 +12,8 @@ public class GameCanvasController : BaseBehaviour
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverPopup;
     [SerializeField] private Button exitButton;
+    [SerializeField] private GameObject pauseMenu;
+    private bool isPaused;
 
     [SerializeField] private AudioClip[] gameMusic;
     private AudioSource audioSource;
@@ -40,6 +42,11 @@ public class GameCanvasController : BaseBehaviour
     {
         scoreText.text = $"Score:{gameManager.score}"; 
         healthText.text = $"Health: {gameManager.playerHealth}";
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            Debug.Log("P pressed");
+            PauseGame();
+        }
     }
     private void OnPlayerDeadEvent(object sender, EventArgs e)
     {
@@ -47,5 +54,21 @@ public class GameCanvasController : BaseBehaviour
         gameOverScoreText.text = $"Score:{gameManager.score}";
 
         StopListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
+    }
+
+    public void PauseGame() {
+        if (!isPaused)
+        {
+            isPaused = true;
+            pauseMenu.SetActive(true);
+            //game slows down to zero speed
+            Time.timeScale = 0;
+        } else
+        {
+            isPaused = false;
+            pauseMenu.SetActive(false);
+            //game plays at normal speed
+            Time.timeScale = 1;
+        }
     }
 }
