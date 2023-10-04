@@ -12,6 +12,8 @@ public class AppManager : Manager
     public UIManager uiManager { get; private set; }
     public GameManager gameManager { get; private set; }
     public MainMenuManager mainMenuManager { get; private set; }
+    public SoundManager soundManager { get; private set; }
+
 
     [SerializeField] private GameObject eventManagerPrefab;
     [SerializeField] private GameObject dataManagerPrefab;
@@ -19,6 +21,7 @@ public class AppManager : Manager
     [SerializeField] private GameObject uiManagerPrefab;
     [SerializeField] private GameObject mainMenuManagerPrefab;
     [SerializeField] private GameObject gameManagerPrefab;
+    [SerializeField] private GameObject soundManagerPrefab;
 
     private GameObject eventManagerObject;
     private GameObject dataManagerObject;
@@ -26,6 +29,7 @@ public class AppManager : Manager
     private GameObject uiManagerObject;
     private GameObject mainMenuManagerObject;
     private GameObject gameManagerObject;
+    private GameObject soundManagerObject;
 
     private void Awake()
     {
@@ -35,21 +39,25 @@ public class AppManager : Manager
         dataManagerObject = Instantiate(dataManagerPrefab);
         sceneLoadingManagerObject = Instantiate(sceneLoadingManagerPrefab);
         uiManagerObject = Instantiate(uiManagerPrefab);
+        soundManagerObject = Instantiate(soundManagerPrefab);
 
         DontDestroyOnLoad(eventManagerObject);
         DontDestroyOnLoad(dataManagerObject);
         DontDestroyOnLoad(sceneLoadingManagerObject);
         DontDestroyOnLoad(uiManagerObject);
+        DontDestroyOnLoad(soundManagerObject);
 
         eventManager = eventManagerObject.GetComponent<EventManager>();
         dataManager = dataManagerObject.GetComponent<DataManager>();
         sceneLoadingManager = sceneLoadingManagerObject.GetComponent<SceneLoadingManager>();
         uiManager = uiManagerObject.GetComponent<UIManager>();
+        soundManager = soundManagerObject.GetComponent<SoundManager>();
 
         eventManager.Setup(this);
         dataManager.Setup(this);
         sceneLoadingManager.Setup(this);
         uiManager.Setup(this);
+        soundManager.Setup(this);
 
         StartListeningToEvent<SceneLoadedEvent>(OnSceneLoadedEvent);
         sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);
