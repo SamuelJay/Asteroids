@@ -1363,7 +1363,6 @@ RectTransform:
   - {fileID: 8325282659595208735}
   - {fileID: 776051891329125324}
   - {fileID: 3723597924545390069}
-  - {fileID: 3730171447869273665}
   - {fileID: 858735070661075784}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1449,8 +1448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 8505347540656594813}
-  audioSource: {fileID: 1908719657482600813}
-  startGameSound: {fileID: 8300000, guid: b88d4b20607c3d54ab4ac4e845e12fa8, type: 3}
 --- !u!1 &6184965818551232505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,70 +1524,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &6596634156308199722
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3730171447869273665}
-  - component: {fileID: 7651142527483649552}
-  - component: {fileID: 2390487795501238778}
-  m_Layer: 0
-  m_Name: TransitionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3730171447869273665
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6596634156308199722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6084102744697957617}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7651142527483649552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6596634156308199722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61430b0086307cc4da3ccc8d39ae88da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionTemplate: {fileID: 5276914992623515724, guid: 616d511151a6c554caddf1c754e4f91d, type: 3}
---- !u!114 &2390487795501238778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6596634156308199722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4666d1a46cb76542b7e6e7a7f4893cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionSettings: {fileID: 11400000, guid: 06fa0ad2bc756f44ab258bc74947381d, type: 2}
-  transitionPanelIN: {fileID: 3730171447869273665}
-  transitionPanelOUT: {fileID: 3730171447869273665}
-  transitionCanvas: {fileID: 6206768160594977808}
-  multiplyColorMaterial: {fileID: 2100000, guid: 53171468e32441749b007c64337cd3db, type: 2}
-  additiveColorMaterial: {fileID: 2100000, guid: 65ccb7b6cbefce14eb6f884cfc33ba91, type: 2}
 --- !u!1 &7003282951212847752
 GameObject:
   m_ObjectHideFlags: 0
