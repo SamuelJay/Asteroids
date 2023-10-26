@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b644e16749c384a93b1b1c3e9b4293, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  powerupFrequency: 2
+  powerupFrequency: 1
   pointsForDestroyingAsteroids: 1
