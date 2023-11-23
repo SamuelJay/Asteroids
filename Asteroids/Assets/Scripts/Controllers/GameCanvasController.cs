@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+#if UNITY_EDITOR
 using UnityEngine;
+#endif
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameCanvasController : BaseBehaviour
@@ -16,9 +19,11 @@ public class GameCanvasController : BaseBehaviour
     private bool isPaused;
 
     [SerializeField] private AudioClip[] gameMusic;
-    private AudioSource audioSource;
+    private AudioSource audioMusicSource;
     private AppManager appManager=> manager as AppManager;
     private GameManager gameManager=> appManager.gameManager;
+
+    private SceneLoadingManager sceneLoadingManager => appManager.sceneLoadingManager;
     public override void Setup(Manager manager)
     {
         base.Setup(manager);
@@ -33,9 +38,9 @@ public class GameCanvasController : BaseBehaviour
     }
 
     private void AudioSetUp() {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = gameMusic[UnityEngine.Random.Range(0, gameMusic.Length)];
-        audioSource.Play();
+        audioMusicSource = GetComponent<AudioSource>();
+        audioMusicSource.clip = gameMusic[UnityEngine.Random.Range(0, gameMusic.Length)];
+        audioMusicSource.Play();
     }
 
     private void Update()
@@ -70,5 +75,20 @@ public class GameCanvasController : BaseBehaviour
             //game plays at normal speed
             Time.timeScale = 1;
         }
+    }
+
+    public void RestartGame() {
+
+        sceneLoadingManager.LoadScene("MainMenu", LoadSceneMode.Single);
+
+    }
+
+    public void Exit() {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+
+#else
+        Application.Quit();
+#endif
     }
 }

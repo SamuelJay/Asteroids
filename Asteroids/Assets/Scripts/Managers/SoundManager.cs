@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class SoundManager : Manager
 {
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip playerDied;
+    [SerializeField] private AudioClip laserFire;
+    [SerializeField] private AudioClip asteroidDestroyed;
+    [SerializeField] private AudioClip barrierPowerup;
+    [SerializeField] private AudioClip blasterPowerup;
 
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip playerDied;
-    [SerializeField] AudioClip laserFire;
-    [SerializeField] AudioClip asteroidDestroyed;
-    [SerializeField] AudioClip barrierPowerup;
-    [SerializeField] AudioClip blasterPowerup;
+    private bool isMuted;
 
-
+    [SerializeField] AudioSource musicAudioSource;
 
     public override void Setup(Manager manager) {
 
@@ -51,5 +52,11 @@ public class SoundManager : Manager
         audioSource.PlayOneShot(laserFire);
     }
 
+    public void OnMuteButtonPressed() {
 
+        Debug.Log("Mute button pressed");
+        isMuted = !isMuted;
+        audioSource.mute = isMuted;
+        musicAudioSource.mute = isMuted;
+    }
 }

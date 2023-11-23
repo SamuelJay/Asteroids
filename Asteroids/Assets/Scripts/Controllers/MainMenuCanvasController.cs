@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
+#endif
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
@@ -23,5 +25,14 @@ public class MainMenuCanvasController : Controller
       /*  audioSource.PlayOneShot(startGameSound);
         Invoke("LoadGameScene", startGameSound.length);*/
         TriggerEvent<StartButtonPressedEvent>(new StartButtonPressedEvent());
+    }
+
+    public void Exit() {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+
+#else
+        Application.Quit();
+#endif
     }
 }

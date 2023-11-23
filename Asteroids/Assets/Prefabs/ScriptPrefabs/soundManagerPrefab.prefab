@@ -51,6 +51,7 @@ MonoBehaviour:
   asteroidDestroyed: {fileID: 8300000, guid: 5532b63a0449f4c40951ef4a75958983, type: 3}
   barrierPowerup: {fileID: 8300000, guid: d0c2f68ee80d26f49816cf8c52256baf, type: 3}
   blasterPowerup: {fileID: 8300000, guid: 7f6036f129a9a4f439697d878fbc1f3f, type: 3}
+  musicAudioSource: {fileID: 681798581038736480, guid: 657307db3515f974ba4ccbb4e558d5cb, type: 3}
 --- !u!82 &6289960180029727429
 AudioSource:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
