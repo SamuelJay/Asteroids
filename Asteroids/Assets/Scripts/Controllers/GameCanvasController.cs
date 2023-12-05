@@ -14,6 +14,7 @@ public class GameCanvasController : BaseBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverPopup;
+    [SerializeField] private Button muteButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private GameObject pauseMenu;
     private bool isPaused;
@@ -30,6 +31,10 @@ public class GameCanvasController : BaseBehaviour
         StartListeningToEvent<PlayerDeadEvent>(OnPlayerDeadEvent);
         exitButton.onClick.AddListener(ExitButtonPressed);
         AudioSetUp();
+        muteButton.onClick.AddListener(MuteButtonPressed);
+    }
+    private void MuteButtonPressed() {
+        TriggerEvent<MuteButtonPressedEvent>(new MuteButtonPressedEvent());
     }
 
     private void ExitButtonPressed()

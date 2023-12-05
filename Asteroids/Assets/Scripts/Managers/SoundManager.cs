@@ -12,9 +12,8 @@ public class SoundManager : Manager
     [SerializeField] private AudioClip barrierPowerup;
     [SerializeField] private AudioClip blasterPowerup;
 
+    private AudioListener audioListener; 
     private bool isMuted;
-
-    [SerializeField] AudioSource musicAudioSource;
 
     public override void Setup(Manager manager) {
 
@@ -24,6 +23,14 @@ public class SoundManager : Manager
         StartListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyed);
         StartListeningToEvent<BarrierPowerupEvent>(OnBarrierPowerup);
         StartListeningToEvent<BlasterPowerupEvent>(OnBlasterPowerup);
+        StartListeningToEvent<MuteButtonPressedEvent>(OnMuteButtonPressed);
+        
+    }
+
+    public void SyncMuted() {
+        audioListener = Camera.main.GetComponent<AudioListener>();
+        print($"Syncing muted {audioListener==null}");
+        audioListener.enabled = !isMuted;
     }
 
     private void OnBlasterPowerup(object sender, EventArgs e) {
@@ -52,11 +59,9 @@ public class SoundManager : Manager
         audioSource.PlayOneShot(laserFire);
     }
 
-    public void OnMuteButtonPressed() {
-
-        Debug.Log("Mute button pressed");
+    private void OnMuteButtonPressed(object sender, EventArgs e) {
+        Debug.Log($"Mute button pressed {audioListener == null}");
         isMuted = !isMuted;
-        audioSource.mute = isMuted;
-        musicAudioSource.mute = isMuted;
+        audioListener.enabled = !isMuted;
     }
 }

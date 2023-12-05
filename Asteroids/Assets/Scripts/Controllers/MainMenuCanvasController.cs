@@ -11,6 +11,7 @@ using System;
 public class MainMenuCanvasController : Controller
 {
     [SerializeField] private Button startButton;
+    [SerializeField] private Button muteButton;
    /* [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip startGameSound;*/
 
@@ -18,6 +19,11 @@ public class MainMenuCanvasController : Controller
     {
         base.Setup(manager);
         startButton.onClick.AddListener(StartButtonPressed);
+        muteButton.onClick.AddListener(MuteButtonPressed);
+    }
+
+    private void MuteButtonPressed() {
+       TriggerEvent<MuteButtonPressedEvent>(new MuteButtonPressedEvent());
     }
 
     public void StartButtonPressed()

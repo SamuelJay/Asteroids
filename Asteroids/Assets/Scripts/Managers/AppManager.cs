@@ -74,6 +74,7 @@ public class AppManager : Manager
         mainMenuManagerObject = Instantiate(mainMenuManagerPrefab);
         mainMenuManager = mainMenuManagerObject.GetComponent<MainMenuManager>();
         mainMenuManager.Setup(this);
+        soundManager.SyncMuted();
     }
 
     private void SetupGameScene()
@@ -81,6 +82,7 @@ public class AppManager : Manager
         gameManagerObject = Instantiate(gameManagerPrefab);
         gameManager = gameManagerObject.GetComponent<GameManager>();
         gameManager.Setup(this);
+        soundManager.SyncMuted();
     }
 
     private void OnSceneLoadedEvent(object sender, EventArgs e)
