@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerBehaviour : BaseObjectBehaviour
 {
@@ -90,6 +91,23 @@ public class PlayerBehaviour : BaseObjectBehaviour
                 waitingForBlaster=false;
             }
         }
+
+
+        // Calculate the direction vector from the player to the mouse
+        Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 mousePosition = Input.mousePosition;
+        Vector2 direction = new Vector2(mousePosition.x - playerPosition.x, mousePosition.y - playerPosition.y);
+        // Calculate the angle between the player and the mouse
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Adjust the angle based on the player's orientation
+        if (transform.up.x > 90) {
+
+            angle += 90;
+        } else {
+            angle -= 90;
+        }
+        // Rotate the player to face the mouse
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
     
     private void OnShootPressed(InputAction.CallbackContext obj)

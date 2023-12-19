@@ -93,6 +93,7 @@ public class GameManager : Manager
         powerUp.transform.position = position;
         BasePowerup powerupBehaviour=powerUp.GetComponent<BasePowerup>();
         powerupBehaviour.Setup(manager);
+        Destroy(powerUp, 10f);
     }
 
     private void OnDestroy()

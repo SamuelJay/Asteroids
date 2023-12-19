@@ -18,12 +18,12 @@ public class SoundManager : Manager
     public override void Setup(Manager manager) {
 
         base.Setup(manager);
-        StartListeningToEvent<ShootPressedEvent>(OnShootPressed);
         StartListeningToEvent<PlayerDeadEvent>(OnPlayerDead);
         StartListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyed);
         StartListeningToEvent<BarrierPowerupEvent>(OnBarrierPowerup);
         StartListeningToEvent<BlasterPowerupEvent>(OnBlasterPowerup);
         StartListeningToEvent<MuteButtonPressedEvent>(OnMuteButtonPressed);
+        StartListeningToEvent<ShootEvent>(OnShoot);
         
     }
 
@@ -54,7 +54,7 @@ public class SoundManager : Manager
 
     }
 
-    private void OnShootPressed(object sender, EventArgs e) {
+    private void OnShoot(object sender, EventArgs e) {
 
         audioSource.PlayOneShot(laserFire);
     }
@@ -63,5 +63,14 @@ public class SoundManager : Manager
         Debug.Log($"Mute button pressed {audioListener == null}");
         isMuted = !isMuted;
         audioListener.enabled = !isMuted;
+    }
+
+    private void OnDestroy() {
+        StopListeningToEvent<ShootEvent>(OnShoot);
+        StopListeningToEvent<PlayerDeadEvent>(OnPlayerDead);
+        StopListeningToEvent<AsteroidDestroyedEvent>(OnAsteroidDestroyed);
+        StopListeningToEvent<BarrierPowerupEvent>(OnBarrierPowerup);
+        StopListeningToEvent<BlasterPowerupEvent>(OnBlasterPowerup);
+        StopListeningToEvent<MuteButtonPressedEvent>(OnMuteButtonPressed);
     }
 }

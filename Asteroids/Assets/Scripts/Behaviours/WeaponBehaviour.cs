@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponBehaviour : StateMachineBehaviour
 {
     [SerializeField] private WeaponData data;
+    SoundManager soundmanager;
+
     private GameObject bulletPrefab;
     private ObjectPooler bulletPool;
     public int burstCount { get; private set; }
@@ -17,6 +19,7 @@ public class WeaponBehaviour : StateMachineBehaviour
         bulletPool.CreatePool();
         burstCount = data.GetBurstAmount();
         SetState(new WeaponIdleState(this, data));
+       soundmanager = GetComponent<SoundManager>(); 
     }
     public void Equip() 
     {
@@ -43,6 +46,7 @@ public class WeaponBehaviour : StateMachineBehaviour
         BulletBehaviour bulletBehaviour = bullet.GetComponent<BulletBehaviour>();
         bulletBehaviour.Setup(manager, data.GetBulletSpeed(), data.GetBulletLifeTime());
         burstCount--;
+        TriggerEvent<ShootEvent>(new ShootEvent());
     }
     public void EndBurst()
     {

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectDuration: 0
   sprite: {fileID: 0}
-  numberOfHits: 1
+  numberOfHits: 2

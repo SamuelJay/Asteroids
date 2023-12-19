@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
-#endif
+//#endif
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
