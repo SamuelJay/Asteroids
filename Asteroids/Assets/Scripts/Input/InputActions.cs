@@ -37,24 +37,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RotateLeft"",
-                    ""type"": ""Button"",
-                    ""id"": ""b41b37fa-6626-4b19-b467-b2becfb576bc"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RotateRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""21b91506-29cf-4a45-b585-55f77396f90f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""c74347ab-310f-4c18-b45b-61d1d74eeebb"",
@@ -62,6 +44,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""c85bd253-18ff-4860-8f23-6efb1b7a5643"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -89,56 +80,23 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e2eec3c2-5aef-494d-9d68-080fabc48e9f"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8bd63598-b7ae-47c3-b0a0-d2c129aa1552"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""025da009-db6e-4503-a80f-fc68037a6896"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""03d54a42-95b3-4612-bc57-080a2bb87585"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""e28ed373-f709-4e43-805a-319b9925a712"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44171266-00a6-4205-aefc-af3465d2bc21"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -178,9 +136,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // PlayerControl
         m_PlayerControl = asset.FindActionMap("PlayerControl", throwIfNotFound: true);
         m_PlayerControl_Forward = m_PlayerControl.FindAction("Forward", throwIfNotFound: true);
-        m_PlayerControl_RotateLeft = m_PlayerControl.FindAction("RotateLeft", throwIfNotFound: true);
-        m_PlayerControl_RotateRight = m_PlayerControl.FindAction("RotateRight", throwIfNotFound: true);
         m_PlayerControl_Shoot = m_PlayerControl.FindAction("Shoot", throwIfNotFound: true);
+        m_PlayerControl_Look = m_PlayerControl.FindAction("Look", throwIfNotFound: true);
         // AppControls
         m_AppControls = asset.FindActionMap("AppControls", throwIfNotFound: true);
         m_AppControls_Menu = m_AppControls.FindAction("Menu", throwIfNotFound: true);
@@ -246,17 +203,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerControl;
     private List<IPlayerControlActions> m_PlayerControlActionsCallbackInterfaces = new List<IPlayerControlActions>();
     private readonly InputAction m_PlayerControl_Forward;
-    private readonly InputAction m_PlayerControl_RotateLeft;
-    private readonly InputAction m_PlayerControl_RotateRight;
     private readonly InputAction m_PlayerControl_Shoot;
+    private readonly InputAction m_PlayerControl_Look;
     public struct PlayerControlActions
     {
         private @InputActions m_Wrapper;
         public PlayerControlActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Forward => m_Wrapper.m_PlayerControl_Forward;
-        public InputAction @RotateLeft => m_Wrapper.m_PlayerControl_RotateLeft;
-        public InputAction @RotateRight => m_Wrapper.m_PlayerControl_RotateRight;
         public InputAction @Shoot => m_Wrapper.m_PlayerControl_Shoot;
+        public InputAction @Look => m_Wrapper.m_PlayerControl_Look;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,15 +224,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Forward.started += instance.OnForward;
             @Forward.performed += instance.OnForward;
             @Forward.canceled += instance.OnForward;
-            @RotateLeft.started += instance.OnRotateLeft;
-            @RotateLeft.performed += instance.OnRotateLeft;
-            @RotateLeft.canceled += instance.OnRotateLeft;
-            @RotateRight.started += instance.OnRotateRight;
-            @RotateRight.performed += instance.OnRotateRight;
-            @RotateRight.canceled += instance.OnRotateRight;
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(IPlayerControlActions instance)
@@ -285,15 +237,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Forward.started -= instance.OnForward;
             @Forward.performed -= instance.OnForward;
             @Forward.canceled -= instance.OnForward;
-            @RotateLeft.started -= instance.OnRotateLeft;
-            @RotateLeft.performed -= instance.OnRotateLeft;
-            @RotateLeft.canceled -= instance.OnRotateLeft;
-            @RotateRight.started -= instance.OnRotateRight;
-            @RotateRight.performed -= instance.OnRotateRight;
-            @RotateRight.canceled -= instance.OnRotateRight;
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(IPlayerControlActions instance)
@@ -360,9 +309,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerControlActions
     {
         void OnForward(InputAction.CallbackContext context);
-        void OnRotateLeft(InputAction.CallbackContext context);
-        void OnRotateRight(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IAppControlsActions
     {

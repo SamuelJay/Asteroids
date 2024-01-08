@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -74,14 +75,22 @@ public class PlayerBehaviour : BaseObjectBehaviour
         {
             Move();
         }
-        if (inputActions.PlayerControl.RotateRight.ReadValue<float>() > 0)
-        {
-            transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
-        }
-        if (inputActions.PlayerControl.RotateLeft.ReadValue<float>() > 0)
-        {
-            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
-        }
+        /* if (inputActions.PlayerControl.RotateRight.ReadValue<float>() > 0)
+         {
+             transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
+         }
+         if (inputActions.PlayerControl.RotateLeft.ReadValue<float>() > 0)
+         {
+             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+         }*/
+
+        
+        /*float lookInput = inputActions.PlayerControl.Look.ReadValue<float>();
+
+        transform.Rotate(0, 0, -lookInput);
+
+        Debug.Log(lookInput);*/
+
         if (waitingForBlaster) 
         { 
             blasterTimer+=Time.deltaTime;
